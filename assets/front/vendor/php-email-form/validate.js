@@ -34,6 +34,13 @@
               ferror = ierror = true;
             }
             break;
+          
+            case 'match':
+              if (i.val() === '') {
+                ferror = ierror = true;
+              }
+              break;
+            
 
           case 'minlen':
             if (i.val().length < parseInt(exp)) {

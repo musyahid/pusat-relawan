@@ -12,16 +12,15 @@
 
         <div class="section-title">
           <p>Registrasi Organisasi</p>
-          <h2>1 / 4 Narahubung Organisasi</h2>
+          <h2>Narahubung Organisasi</h2>
         </div>
 
         <div class="row">
 
           <div class="col-lg-12">
-            <form id="regForm" action="<?= base_url('forum/registrasi/registrasi_forum') ?>" method="post" role="form" class="php-email-form">
-              <div class="tab">
+            <form action="<?= base_url('forum/registrasi/registrasi_forum') ?>" method="post" role="form" class="php-email-form">
                 <div class="form-row">
-                  <div class="col-lg-12 form-group">
+                  <div class="col-lg-6 form-group">
                   <label for="nama_depan">Nama depan</label>
                     <input type="text" name="nama_depan" class="form-control" id="nama_depan" placeholder="Nama Depan" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                     <div class="validate"></div>
@@ -33,8 +32,8 @@
                   </div>
                 </div>
                 <div class="form-row">
-                <label for="nama_depan">Email</label>
-                  <div class="col-lg-12 form-group">
+                  <div class="col-lg-6 form-group">
+                  <label for="nama_depan">Email</label>
                     <input type="email" name="email" class="form-control" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email"  />
                     <div class="validate"></div>
                   </div>
@@ -56,10 +55,8 @@
                     <div class="validate"></div>
                   </div>
                 </div>
-              </div>
-              <div class="tab">
                 <div class="form-row">
-                  <div class="col-lg-12 form-group">
+                  <div class="col-lg-6 form-group">
                   <label for="nama_depan">Nama Forum Relawan</label>
                     <input type="text" name="nama_forum_relawan" class="form-control" id="nama_forum_relawan" placeholder="Nama Forum Relawan" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                     <div class="validate"></div>
@@ -77,8 +74,6 @@
                     <div class="validate"></div>
                   </div>
                 </div>
-              </div>
-              <div class="tab">
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Lokasi</label>
@@ -102,7 +97,6 @@
                     <input type="text" name="kode_pos" class="form-control" id="kode_pos" placeholder="Kode Pos" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                     <div class="validate"></div>
                   </div>
-                </div>
                 <div class="form-row">
                   <div class="col form-group">
                   <label for="nama_depan">Telephone Organisasi</label>
@@ -116,19 +110,7 @@
                   </div>
                 </div>
               </div>
-              <div style="overflow:auto;">
-          <div style="float:right;">
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-          </div>
-        </div>
-        <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-        </div>
+              <div class="text-center"><button type="submit">REGISTERASI</button></div>
             </form>
           </div>
 

@@ -81,7 +81,7 @@
   <script src="<?= base_url('assets/front/'); ?>vendor/jquery/jquery.min.js"></script>
   <script src="<?= base_url('assets/front/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?= base_url('assets/front/'); ?>vendor/jquery.easing/jquery.easing.min.js"></script>
-
+  <script src="<?= base_url('assets/front/'); ?>vendor/php-email-form/validate.js"></script>
   <script src="<?= base_url('assets/front/'); ?>vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="<?= base_url('assets/front/'); ?>vendor/counterup/counterup.min.js"></script>
   <script src="<?= base_url('assets/front/'); ?>vendor/venobox/venobox.min.js"></script>

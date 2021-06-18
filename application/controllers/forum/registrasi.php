@@ -20,7 +20,7 @@ class registrasi extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('forum/registrasi_forum1');
+		$this->load->view('forum/registrasi_forum');
 	}
 
     public function registrasi_forum() 

@@ -30,6 +30,56 @@
   <link href="<?= base_url('assets/front/'); ?>css/style.css" rel="stylesheet">
   <link href="<?= base_url('assets/front/'); ?>css/style2.css" rel="stylesheet">
 
+  <style>
+        input.invalid {
+        background-color: #ffdddd;
+      }
+
+      /* Hide all steps by default: */
+      .tab {
+        display: none;
+      }
+
+      button {
+        background-color: #04AA6D;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      #prevBtn {
+        background-color: #bbbbbb;
+      }
+
+      /* Make circles that indicate the steps of the form: */
+      .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;  
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+      }
+
+      .step.active {
+        opacity: 1;
+      }
+
+      /* Mark the steps that are finished and valid: */
+      .step.finish {
+        background-color: #04AA6D;
+        }
+    </style>
+
   <!-- =======================================================
   * Template Name: Multi - v2.2.1
   * Template URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/

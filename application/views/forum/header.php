@@ -11,8 +11,10 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.html">Beranda</a></li>
+          <li><a href="#about">Cari Forum</a></li>
+          <li><a href="#about">Cari Relawan</a></li>
+          <li><a href="#about">Cari Pekatihan</a></li>
           <li><a href="#about">Data Relawan</a></li>
-          <li><a href="#services">Data Bencana</a></li>
           <li><a href="#portfolio">Tentang Kami</a></li>
         </ul>
       </nav><!-- .nav-menu -->

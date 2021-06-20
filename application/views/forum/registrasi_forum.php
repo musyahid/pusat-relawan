@@ -18,7 +18,7 @@
         <div class="row">
 
           <div class="col-lg-12">
-            <form action="<?= base_url('forum/registrasi/registrasi_forum') ?>" method="post" role="form" class="php-email-form">
+            <form method="post" role="form" action="<?= base_url('forum/registrasi/registrasi_forum') ?>" enctype="multipart/form-data"  class="php-email-form" >
             <?php if($this->session->flashdata('msg')){echo $this->session->flashdata('msg');} ?>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
@@ -57,7 +57,7 @@
                   </div>
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Nama Forum</label>
-                    <input type="text" class="form-control" name="nama_forum" id="nama_forum" value="<?php 
+                    <input type="text" class="form-control" name="nama_forum" placeholder="Nama Forum" id="nama_forum" value="<?php 
                     if(validation_errors() != false) { 
                       echo $data_validasi['nama_forum'];
                     } ;
@@ -88,12 +88,16 @@
                 <div class="form-row">
                 <div class="col form-group">
                   <label for="nama_depan">Logo Forum</label>
-                    <input type="file" name="logo_forum" class="form-control" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="file" name="logo" class="form-control"  placeholder="Password" />
 
                   </div>
                   <div class="col form-group">
                   <label for="nama_depan">Tanggal Pendirian</label>
-                    <input type="date" class="form-control" name="tanggal_berdiri" id="tanggal_berdiri" value="2013-01-08" />
+                    <input type="date" class="form-control" name="tanggal_berdiri" id="tanggal_berdiri" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['tanggal_berdiri'];
+                    } ;
+                    ?>"  />
 
                   </div>
                 </div>

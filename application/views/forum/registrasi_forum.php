@@ -40,7 +40,7 @@
                   <label for="nama_depan">Nama Lengkap Pendaftar</label>
                     <input type="text" name="nama_lengkap" value="<?php 
                     if(validation_errors() != false) { 
-                      echo $akun['nama_lengkap'];
+                      echo $data_validasi['nama_lengkap'];
                     } ;
                     ?>" class="form-control" id="nama_depan" placeholder="Nama Lengkap Pendaftar"  />
                   </div>
@@ -50,7 +50,7 @@
                   <label for="nama_depan">Email</label>
                     <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="<?php 
                     if(validation_errors() != false) { 
-                      echo $akun['email'];
+                      echo $data_validasi['email'];
                     } ;
                     ?>"  />
 
@@ -59,7 +59,7 @@
                   <label for="nama_depan">Nama Forum</label>
                     <input type="text" class="form-control" name="nama_forum" id="nama_forum" value="<?php 
                     if(validation_errors() != false) { 
-                      echo $akun['nama_forum'];
+                      echo $data_validasi['nama_forum'];
                     } ;
                     ?>"  />
 
@@ -70,14 +70,18 @@
                   <label for="nama_depan">Password</label>
                     <input type="text" name="password" class="form-control" id="password" placeholder="Password" value="<?php 
                     if(validation_errors() != false) { 
-                      echo $akun['password'];
+                      echo $data_validasi['password'];
                     } ;
                     ?>"  />
 
                   </div>
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Konfirmasi Password</label>
-                    <input type="text" class="form-control" name="konfirmasi_password" id="konfirmasi_password" placeholder="Konfirmasi Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="text" class="form-control" name="konfirmasi_password" id="konfirmasi_password" placeholder="Konfirmasi Password" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['konfirmasi_password'];
+                    } ;
+                    ?>"  />
 
                   </div>
                 </div>
@@ -89,42 +93,72 @@
                   </div>
                   <div class="col form-group">
                   <label for="nama_depan">Tanggal Pendirian</label>
-                    <input type="date" class="form-control" name="tanggal_berdiri" id="tanggal_berdiri" placeholder="Tanggal Pendirian" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="date" class="form-control" name="tanggal_berdiri" id="tanggal_berdiri" value="2013-01-08" />
 
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Lokasi</label>
-                    <textarea name="lokasi" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="lokasi" class="form-control" id="exampleFormControlTextarea1" rows="3">
+                    <?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['lokasi'];
+                    } ;
+                    ?>
+                    </textarea>
 
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-6 form-group">
                   <label for="nama_depan">Provinsi</label>
-                    <input type="text" name="provinsi" class="form-control" id="provinsi" placeholder="Provinsi" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="text" name="provinsi" class="form-control" id="provinsi" placeholder="Provinsi" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['provinsi'];
+                    } ;
+                    ?>"  />
 
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Kabupaten</label>
-                    <input type="text" name="kabupaten" class="form-control" id="kabupaten" placeholder="Kabupaten" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="text" name="kabupaten" class="form-control" id="kabupaten" placeholder="Kabupaten" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['kabupaten'];
+                    } ;
+                    ?>"  />
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Kecamatan</label>
-                    <input type="text" name="kecamatan" class="form-control" id="kecamatan" placeholder="Kecamatan" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="text" name="kecamatan" class="form-control" id="kecamatan" placeholder="Kecamatan" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['kecamatan'];
+                    } ;
+                    ?>"  />
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Kode Pos</label>
-                    <input type="text" name="kode_pos" class="form-control" id="kode_pos" placeholder="Kode Pos" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />                  
+                    <input type="text" name="kode_pos" class="form-control" id="kode_pos" placeholder="Kode Pos" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['kode_pos'];
+                    } ;
+                    ?>"  />                  
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Telephone</label>
-                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" placeholder="Nomor Handphone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" placeholder="Nomor Handphone"value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['nomor_handphone'];
+                    } ;
+                    ?>"  />
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Website</label>
-                    <input type="text" name="website" class="form-control" id="website" placeholder="Website" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />                  
+                    <input type="text" name="website" class="form-control" id="website" placeholder="Website" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $data_validasi['website'];
+                    } ;
+                    ?>"  />                  
                   </div>
               </div>
               <div class="text-center"><button type="submit">REGISTERASI</button></div>

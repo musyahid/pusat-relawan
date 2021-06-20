@@ -17,6 +17,7 @@ class registrasi extends CI_Controller {
 
     public function registrasi_forum() 
     {
+		$nama_depan = $this->input->post('nama_depan');
 		$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap Pendaftar', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('nomor_handphone', 'Nomor Handphone', 'required');
@@ -30,31 +31,32 @@ class registrasi extends CI_Controller {
 		$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required');
 		$this->form_validation->set_rules('kode_pos', 'Kode Pos', 'required');
 		$this->form_validation->set_rules('website', 'Website Organisasi', 'required');
-		
+
 		$this->form_validation->set_message('required', '{field} mohon diisi');
 
 
-		$data['validation'] = array(
-			'nama_lengkap' 		=> $this->input->post('nama_lengkap'), 
-			'email'				=> $this->input->post('email'), 
-			'password' 			=> md5($this->input->post('password')),
-			'nomor_handphone'	=> $this->input->post('nomor_handphone'),
-			'nama_forum' 		=> $this->input->post('nama_forum'), 
-			'tanggal_berdiri' 	=> $this->input->post('tanggal_berdiri'), 
-			'logo' 				=> 'tes', 
-			'lokasi' 			=> $this->input->post('lokasi'), 
-			'provinsi' 			=> $this->input->post('provinsi'), 
-			'kabupaten'			=> $this->input->post('kabupaten'), 
-			'kecamatan' 		=> $this->input->post('kecamatan'), 
-			'kode_pos' 			=> $this->input->post('kode_pos'),
-			'website' 			=> $this->input->post('website'),
+		$data['data_validasi'] = array(
+			'nama_lengkap' 			=> $this->input->post('nama_lengkap'), 
+			'email'					=> $this->input->post('email'), 
+			'password' 				=> $this->input->post('password'),
+			'konfirmasi_password'	=> $this->input->post('konfirmasi_password'),
+			'nomor_handphone'		=> $this->input->post('nomor_handphone'),
+			'nama_forum' 			=> $this->input->post('nama_forum'), 
+			'tanggal_berdiri' 		=> $this->input->post('tanggal_berdiri'), 
+			'logo' 					=> 'tes', 
+			'lokasi' 				=> $this->input->post('lokasi'), 
+			'provinsi' 				=> $this->input->post('provinsi'), 
+			'kabupaten'				=> $this->input->post('kabupaten'), 
+			'kecamatan' 			=> $this->input->post('kecamatan'), 
+			'kode_pos' 				=> $this->input->post('kode_pos'),
+			'website' 				=> $this->input->post('website'),
 		);
 
 		$data_forum['forum'] = array(
 
 		);
 
-		
+
 		if($this->form_validation->run() != false){
 
 			$data = array(

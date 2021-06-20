@@ -13,14 +13,14 @@
           <li class="active"><a href="index.html">Beranda</a></li>
           <li><a href="#about">Cari Forum</a></li>
           <li><a href="#about">Cari Relawan</a></li>
-          <li><a href="#about">Cari Pekatihan</a></li>
+          <li><a href="#about">Cari Pelatihan</a></li>
           <li><a href="#about">Data Relawan</a></li>
           <li><a href="#portfolio">Tentang Kami</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
       <a href="<?= base_url('forum/registrasi') ?>" class="get-started-btn">REGISTRASI</a>
-      <a href="#about" class="get-started-btn">LOGIN</a>
+      <a href="<?= base_url('login') ?>" class="get-started-btn">LOGIN</a>
 
     </div>
   </header><!-- End Header -->

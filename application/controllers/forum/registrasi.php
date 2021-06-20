@@ -94,7 +94,7 @@ class registrasi extends CI_Controller {
 				//MUNCULKAN PESAN BERHASIL REGISTRASI
 				$this->session->set_flashdata('msg', '
 					<div class="alert alert-block alert-success"></i></button>
-					<i class="ace-icon fa fa-bullhorn green"></i> REGISTRASI BERHASIL. SILAHKAN <a href="asa">LOGIN</a>
+					<i class="ace-icon fa fa-bullhorn green"></i> REGISTRASI BERHASIL. SILAHKAN LOGIN
 				</div>');
 				redirect(base_url('forum/registrasi/registrasi_forum'));
 			}

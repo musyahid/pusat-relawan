@@ -1,6 +1,6 @@
-<?php $this->load->view('forum/head') ?>
+<?php $this->load->view('template/head') ?>
 
-<?php $this->load->view('forum/header.php') ?>
+<?php $this->load->view('template/header.php') ?>
 
 
 
@@ -68,7 +68,7 @@
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Password</label>
-                    <input type="text" name="password" class="form-control" id="password" placeholder="Password" value="<?php 
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" value="<?php 
                     if(validation_errors() != false) { 
                       echo $data_validasi['password'];
                     } ;
@@ -77,7 +77,7 @@
                   </div>
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Konfirmasi Password</label>
-                    <input type="text" class="form-control" name="konfirmasi_password" id="konfirmasi_password" placeholder="Konfirmasi Password" value="<?php 
+                    <input type="password" class="form-control" name="konfirmasi_password" id="konfirmasi_password" placeholder="Konfirmasi Password" value="<?php 
                     if(validation_errors() != false) { 
                       echo $data_validasi['konfirmasi_password'];
                     } ;
@@ -177,4 +177,4 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php $this->load->view('forum/footer.php') ?>
+  <?php $this->load->view('template/footer.php') ?>

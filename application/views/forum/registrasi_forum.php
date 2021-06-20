@@ -19,96 +19,113 @@
 
           <div class="col-lg-12">
             <form action="<?= base_url('forum/registrasi/registrasi_forum') ?>" method="post" role="form" class="php-email-form">
+            <?php if($this->session->flashdata('msg')){echo $this->session->flashdata('msg');} ?>
                 <div class="form-row">
-                  <div class="col-lg-6 form-group">
-                  <label for="nama_depan">Nama depan</label>
-                    <input type="text" name="nama_depan" class="form-control" id="nama_depan" placeholder="Nama Depan" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                  <div class="col-lg-12 form-group">
+                  <?php 
+                  $validation = validation_errors();
+
+                  if(validation_errors() != false) { 
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p>'. $validation.'</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>';
+                  }?>
+                
                   </div>
-                  <div class="col form-group">
-                  <label for="nama_depan">Nama Belakang</label>
-                    <input type="text" class="form-control" name="nama_belakang" id="nama_belakang" placeholder="Nama Belakang" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+
+                  <div class="col-lg-12 form-group ">
+                  <label for="nama_depan">Nama Lengkap Pendaftar</label>
+                    <input type="text" name="nama_lengkap" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $akun['nama_lengkap'];
+                    } ;
+                    ?>" class="form-control" id="nama_depan" placeholder="Nama Lengkap Pendaftar"  />
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="col-lg-6 form-group">
+                  <div class="col-lg-12 form-group">
                   <label for="nama_depan">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email"  />
-                    <div class="validate"></div>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $akun['email'];
+                    } ;
+                    ?>"  />
+
                   </div>
-                  <div class="col form-group">
-                  <label for="nama_depan">Nomor Handphone</label>
-                    <input type="text" class="form-control" name="nomor_handphone" id="nomor_handphone" placeholder="Nomor Handphone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                  <div class="col-lg-12 form-group">
+                  <label for="nama_depan">Nama Forum</label>
+                    <input type="text" class="form-control" name="nama_forum" id="nama_forum" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $akun['nama_forum'];
+                    } ;
+                    ?>"  />
+
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Password</label>
-                    <input type="text" name="password" class="form-control" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                    <input type="text" name="password" class="form-control" id="password" placeholder="Password" value="<?php 
+                    if(validation_errors() != false) { 
+                      echo $akun['password'];
+                    } ;
+                    ?>"  />
+
                   </div>
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Konfirmasi Password</label>
                     <input type="text" class="form-control" name="konfirmasi_password" id="konfirmasi_password" placeholder="Konfirmasi Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="col-lg-6 form-group">
-                  <label for="nama_depan">Nama Forum Relawan</label>
-                    <input type="text" name="nama_forum_relawan" class="form-control" id="nama_forum_relawan" placeholder="Nama Forum Relawan" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                <div class="col form-group">
+                  <label for="nama_depan">Logo Forum</label>
+                    <input type="file" name="logo_forum" class="form-control" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+
                   </div>
                   <div class="col form-group">
                   <label for="nama_depan">Tanggal Pendirian</label>
-                    <input type="date" class="form-control" name="tanggal_pendirian" id="tanggal_pendirian" placeholder="Tanggal Pendirian" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="col-lg-12 form-group">
-                  <label for="nama_depan">Logo Forum</label>
-                    <input type="file" name="password" class="form-control" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                    <input type="date" class="form-control" name="tanggal_berdiri" id="tanggal_berdiri" placeholder="Tanggal Pendirian" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Lokasi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    <div class="validate"></div>
+                    <textarea name="lokasi" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="col form-group">
+                  <div class="col-6 form-group">
                   <label for="nama_depan">Provinsi</label>
                     <input type="text" name="provinsi" class="form-control" id="provinsi" placeholder="Provinsi" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+
                   </div>
-                  <div class="col form-group">
+                  <div class="col-6 form-group">
                   <label for="nama_depan">Kabupaten</label>
                     <input type="text" name="kabupaten" class="form-control" id="kabupaten" placeholder="Kabupaten" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
                   </div>
-                  <div class="col form-group">
+                  <div class="col-6 form-group">
+                  <label for="nama_depan">Kecamatan</label>
+                    <input type="text" name="kecamatan" class="form-control" id="kecamatan" placeholder="Kecamatan" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  </div>
+                  <div class="col-6 form-group">
                   <label for="nama_depan">Kode Pos</label>
-                    <input type="text" name="kode_pos" class="form-control" id="kode_pos" placeholder="Kode Pos" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                    <input type="text" name="kode_pos" class="form-control" id="kode_pos" placeholder="Kode Pos" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />                  
                   </div>
-                <div class="form-row">
-                  <div class="col form-group">
-                  <label for="nama_depan">Telephone Organisasi</label>
-                    <input type="text" name="telephone_organisasi" class="form-control" id="telephone_organisasi" placeholder="Telephone Organisasi" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                  <div class="col-6 form-group">
+                  <label for="nama_depan">Telephone</label>
+                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" placeholder="Nomor Handphone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   </div>
-                  <div class="col form-group">
-                  <label for="nama_depan">Website Organisasi</label>
-                    <input type="text" name="website_organisasi" class="form-control" id="website_organisasi" placeholder="Website Organisasi" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validate"></div>
+                  <div class="col-6 form-group">
+                  <label for="nama_depan">Website</label>
+                    <input type="text" name="website" class="form-control" id="website" placeholder="Website" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />                  
                   </div>
-                </div>
               </div>
               <div class="text-center"><button type="submit">REGISTERASI</button></div>
             </form>

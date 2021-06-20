@@ -10,7 +10,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Beranda</a></li>
+          <li class="active"><a href="<?= base_url('beranda') ?>">Beranda</a></li>
           <li><a href="#about">Cari Forum</a></li>
           <li><a href="#about">Cari Relawan</a></li>
           <li><a href="#about">Cari Pelatihan</a></li>

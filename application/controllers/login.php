@@ -41,7 +41,7 @@ class login extends CI_Controller {
             if ($hasil > 0 ) {
                 $id_akun = $data_akun[0]->id_akun;
                 
-                $id_forum = $this->akun->get_data_akun($id_akun)[0]->id_forum;
+                $id_forum = $this->akun->get_data_forum($id_akun)[0]->id_forum;
                 print_r($id_forum);
             }else {
                 //TAMPILKAN PESAN KETIKA GAGAL LOGIN

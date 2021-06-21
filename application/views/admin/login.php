@@ -10,14 +10,21 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">SILAHKAN LOGIN</p>
-
-    <form action="../../index2.html" method="post">
+    <?php 
+      $validation = validation_errors();
+      if(validation_errors() != false) { 
+        echo '<div class="alert alert-danger" role="alert">
+        <p>'. $validation.'</p>
+      </div>';
+      }?>
+      <?php if($this->session->flashdata('msg')){echo $this->session->flashdata('msg');} ?>
+    <form action="<?= base_url('admin/login/aksi_login') ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" name="email" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

@@ -12,9 +12,18 @@ class model_akun extends CI_Model {
         return $query->result();
     }
 
-    public function get_data_akun($id_akun){
+    public function get_data_forum($id_akun){
         $this->db->from('akun a');
         $this->db->join('forum f', 'a.id_akun = f.id_akun');
+        $this->db->where('a.id_akun', $id_akun);
+   
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_data_admin($id_akun){
+        $this->db->from('akun a');
+        $this->db->join('admin f', 'a.id_akun = f.id_akun');
         $this->db->where('a.id_akun', $id_akun);
    
         $query = $this->db->get();

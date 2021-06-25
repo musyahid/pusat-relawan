@@ -57,8 +57,7 @@ class registrasi extends CI_Controller {
 				'nama_lengkap' 		=> $this->input->post('nama_lengkap'), 
 				'email'				=> $this->input->post('email'), 
 				'password' 			=> md5($this->input->post('password')),
-				'nomor_handphone'	=> $this->input->post('nomor_handphone'),
-				'role'				=> 'Forum'
+				'nomor_handphone'	=> $this->input->post('nomor_handphone')
 			);
 
 			//INSERT KE TABEL AKUN AND GET LAST ID AUTO INCREMENT

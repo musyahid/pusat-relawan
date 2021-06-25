@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="<?= base_url('assets/back/') ?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?= base_url('assets/back/') ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url('assets/back/') ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/back/plugins') ?>/sweetalert/sweetalert.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

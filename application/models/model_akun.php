@@ -29,4 +29,10 @@ class model_akun extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
+    function hapus_akun($id_akun)
+    {
+        $this->db->where('id_akun', $id_akun);
+        $this->db->delete('akun');
+    }
 }

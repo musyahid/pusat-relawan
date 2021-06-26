@@ -1,78 +1,50 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2021 pada 15.40
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 7.4.19
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.4.19-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Version:             11.1.0.6116
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Database: `relawan_new`
---
 
--- --------------------------------------------------------
+-- Dumping database structure for relawan_new
+CREATE DATABASE IF NOT EXISTS `relawan_new` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `relawan_new`;
 
---
--- Struktur dari tabel `admin`
---
-
-CREATE TABLE `admin` (
-  `id_admin` int(11) NOT NULL,
+-- Dumping structure for table relawan_new.admin
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
   `id_akun` int(11) DEFAULT NULL,
-  `hak_akses` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `hak_akses` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_admin`),
+  KEY `FK_admin_akun` (`id_akun`),
+  CONSTRAINT `FK_admin_akun` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `admin`
---
+-- Data exporting was unselected.
 
-INSERT INTO `admin` (`id_admin`, `id_akun`, `hak_akses`) VALUES
-(1, 30, 1);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `akun`
---
-
-CREATE TABLE `akun` (
-  `id_akun` int(11) NOT NULL,
+-- Dumping structure for table relawan_new.akun
+CREATE TABLE IF NOT EXISTS `akun` (
+  `id_akun` int(11) NOT NULL AUTO_INCREMENT,
   `nama_lengkap` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `nomor_handphone` varchar(50) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
-  `role` enum('Relawan','Forum') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_akun`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `akun`
---
+-- Data exporting was unselected.
 
-INSERT INTO `akun` (`id_akun`, `nama_lengkap`, `email`, `username`, `password`, `nomor_handphone`, `foto`, `role`) VALUES
-(29, 'Nurul Fadhilah', 'nurul@gmail.com', NULL, '202cb962ac59075b964b07152d234b70', '087738934282', NULL, 'Forum'),
-(30, 'admin', 'admin@gmail.com', NULL, '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `forum`
---
-
-CREATE TABLE `forum` (
-  `id_forum` int(11) NOT NULL,
+-- Dumping structure for table relawan_new.forum
+CREATE TABLE IF NOT EXISTS `forum` (
+  `id_forum` int(11) NOT NULL AUTO_INCREMENT,
   `id_akun` int(11) DEFAULT NULL,
   `nama_forum` varchar(255) DEFAULT NULL,
   `tanggal_berdiri` date DEFAULT NULL,
@@ -82,140 +54,45 @@ CREATE TABLE `forum` (
   `kabupaten` varchar(255) DEFAULT NULL,
   `kecamatan` varchar(255) DEFAULT NULL,
   `kode_pos` char(5) DEFAULT NULL,
-  `website` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `website` varchar(100) DEFAULT NULL,
+  `status_pengajuan` int(11) DEFAULT 0,
+  PRIMARY KEY (`id_forum`),
+  KEY `FK_forum_akun` (`id_akun`),
+  CONSTRAINT `FK_forum_akun` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `forum`
---
+-- Data exporting was unselected.
 
-INSERT INTO `forum` (`id_forum`, `id_akun`, `nama_forum`, `tanggal_berdiri`, `logo`, `lokasi`, `provinsi`, `kabupaten`, `kecamatan`, `kode_pos`, `website`) VALUES
-(17, 29, 'Yayasan Nurul Berbagi', '2021-06-02', '2193f87a87a67c70f897344cf081fb2f.jpg', 'Jalan sukabirus', 'Jawa Barat', 'Bandung Barat', 'Dayeuhkolot', '83653', 'nurul.com');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `forum_relawan`
---
-
-CREATE TABLE `forum_relawan` (
+-- Dumping structure for table relawan_new.forum_relawan
+CREATE TABLE IF NOT EXISTS `forum_relawan` (
   `id_relawan` int(11) DEFAULT NULL,
-  `id_forum` int(11) DEFAULT NULL
+  `id_forum` int(11) DEFAULT NULL,
+  KEY `id_forum` (`id_forum`),
+  KEY `id_relawan` (`id_relawan`),
+  CONSTRAINT `forum_relawan_ibfk_1` FOREIGN KEY (`id_forum`) REFERENCES `forum` (`id_forum`),
+  CONSTRAINT `forum_relawan_ibfk_2` FOREIGN KEY (`id_relawan`) REFERENCES `relawan` (`id_relawan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Struktur dari tabel `relawan`
---
-
-CREATE TABLE `relawan` (
-  `id_relawan` int(11) NOT NULL,
+-- Dumping structure for table relawan_new.relawan
+CREATE TABLE IF NOT EXISTS `relawan` (
+  `id_relawan` int(11) NOT NULL AUTO_INCREMENT,
   `id_akun` int(11) DEFAULT NULL,
   `alamat` text DEFAULT NULL,
   `provinsi` varchar(255) DEFAULT NULL,
   `kabupaten_kota` varchar(255) DEFAULT NULL,
   `kecamatan` varchar(255) DEFAULT NULL,
   `deskripsi_keahlian` text DEFAULT NULL,
-  `status_aktif` tinyint(4) DEFAULT NULL
+  `status_aktif` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id_relawan`),
+  KEY `FK_relawan_akun` (`id_akun`),
+  CONSTRAINT `FK_relawan_akun` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Indexes for dumped tables
---
+-- Data exporting was unselected.
 
---
--- Indeks untuk tabel `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`),
-  ADD KEY `FK_admin_akun` (`id_akun`);
-
---
--- Indeks untuk tabel `akun`
---
-ALTER TABLE `akun`
-  ADD PRIMARY KEY (`id_akun`);
-
---
--- Indeks untuk tabel `forum`
---
-ALTER TABLE `forum`
-  ADD PRIMARY KEY (`id_forum`),
-  ADD KEY `FK_forum_akun` (`id_akun`);
-
---
--- Indeks untuk tabel `forum_relawan`
---
-ALTER TABLE `forum_relawan`
-  ADD KEY `id_forum` (`id_forum`),
-  ADD KEY `id_relawan` (`id_relawan`);
-
---
--- Indeks untuk tabel `relawan`
---
-ALTER TABLE `relawan`
-  ADD PRIMARY KEY (`id_relawan`),
-  ADD KEY `FK_relawan_akun` (`id_akun`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `akun`
---
-ALTER TABLE `akun`
-  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT untuk tabel `forum`
---
-ALTER TABLE `forum`
-  MODIFY `id_forum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT untuk tabel `relawan`
---
-ALTER TABLE `relawan`
-  MODIFY `id_relawan` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `FK_admin_akun` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`);
-
---
--- Ketidakleluasaan untuk tabel `forum`
---
-ALTER TABLE `forum`
-  ADD CONSTRAINT `FK_forum_akun` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`);
-
---
--- Ketidakleluasaan untuk tabel `forum_relawan`
---
-ALTER TABLE `forum_relawan`
-  ADD CONSTRAINT `forum_relawan_ibfk_1` FOREIGN KEY (`id_forum`) REFERENCES `forum` (`id_forum`),
-  ADD CONSTRAINT `forum_relawan_ibfk_2` FOREIGN KEY (`id_relawan`) REFERENCES `relawan` (`id_relawan`);
-
---
--- Ketidakleluasaan untuk tabel `relawan`
---
-ALTER TABLE `relawan`
-  ADD CONSTRAINT `FK_relawan_akun` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -8,7 +8,10 @@
         </div>
         <div class="pull-left info">
           <p><?php echo $this->session->userdata("nama_lengkap") ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fa fa-circle text-success"></i> </p>
+               <?php echo $this->session->userdata("nama_forum") ?>
+               <?php echo $this->session->userdata("nama_lemgkap") ?>
+               </a>
         </div>
       </div>
       <!-- search form -->

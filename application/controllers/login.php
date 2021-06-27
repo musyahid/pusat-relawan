@@ -32,18 +32,47 @@ class login extends CI_Controller {
             //CEK AKUN KE MODEL (model_akun)
             $data_akun = $this->akun->cek_autentikasi($email, $passwordMD5);
 
-            //CEK KEMBALIAN DATA
-            //JIKA HASIL 0 ARTINYA DATA AKUN TIDAK DITEMUKAN
-            //JIKA HASIL 1 ARTINYA DATA DITEMUKAN
-            $hasil = count($data_akun);
+            $id_akun = $data_akun[0]->id_akun;
 
-            //JIKA HASIL > 0 ARTINYA DATA DITEMUKAN 
-            if ($hasil > 0 ) {
+            $get_data_admin = $this->akun->get_data_admin($id_akun);
+            $get_data_forum = $this->akun->get_data_forum($id_akun);
+
+            $hasil_cek_admin = count($get_data_admin);
+            $hasil_cek_forum = count($get_data_forum);
+
+            if ($hasil_cek_admin > 0) {
+                $id_akun = $this->akun->get_data_admin($id_akun)[0]->id_akun;
+				$id_admin = $this->akun->get_data_admin($id_akun)[0]->id_admin;
+				$nama_lengkap = $this->akun->get_data_admin($id_akun)[0]->nama_lengkap;
+				$data_session = array(
+                    'id_akun' => $id_akun,
+                    'id_admin' => $id_admin,
+                    'nama_lengkap' => $nama_lengkap,
+					'login' => TRUE
+                );
+             
+                $this->session->set_userdata($data_session);
+
+				redirect(base_url('admin/dashboard'));
+
+            } elseif ($hasil_cek_forum) {
                 $id_akun = $data_akun[0]->id_akun;
                 
                 $id_forum = $this->akun->get_data_forum($id_akun)[0]->id_forum;
-                print_r($id_forum);
-            }else {
+                $nama_forum = $this->akun->get_data_forum($id_akun)[0]->nama_forum;
+                $status_pengajuan = $this->akun->get_data_forum($id_akun)[0]->status_pengajuan;
+
+                $data_session = array(
+                    'id_akun' => $id_akun,
+                    'id_forum' => $id_forum,
+                    'nama_forum' => $nama_forum,
+					'login_forum' => TRUE
+                );
+
+                $this->session->set_userdata($data_session);
+
+                redirect(base_url('forum/dashboard'));
+            } else {
                 //TAMPILKAN PESAN KETIKA GAGAL LOGIN
                 $this->session->set_flashdata('msg', '
                 <div class="alert alert-block alert-danger"></i></button>

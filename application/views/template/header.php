@@ -19,7 +19,7 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="<?= base_url('forum/registrasi') ?>" class="get-started-btn">REGISTRASI</a>
+      <a href="<?= base_url('registrasi') ?>" class="get-started-btn">REGISTRASI</a>
       <a href="<?= base_url('login') ?>" class="get-started-btn">LOGIN</a>
 
     </div>

@@ -19,7 +19,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?= base_url('assets/back/') ?>dist/img/admin_logo.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">AKUN</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -27,11 +27,12 @@
                 <img src="<?= base_url('assets/back/') ?>dist/img/admin_logo.png" class="img-circle" alt="User Image">
 
                 <p><?php echo $this->session->userdata("nama_lengkap") ?></p>
+                <p><?php echo $this->session->userdata("nama_forum") ?></p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="<?= base_url('admin/logout') ?>" class="btn btn-default btn-flat">LOG OUT</a>
+                  <a href="<?= base_url('logout') ?>" class="btn btn-default btn-flat">LOG OUT</a>
                 </div>
               </li>
             </ul>

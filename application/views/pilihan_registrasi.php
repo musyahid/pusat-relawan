@@ -41,7 +41,7 @@
                 <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
                 <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
               </ul> -->
-              <a href="<?= base_url('forum/registrasi') ?>" class="get-started-btn">REGISTRASI</a>
+              <a href="<?= base_url('relawan/registrasi') ?>" class="get-started-btn">REGISTRASI</a>
             </div>
           </div>
 

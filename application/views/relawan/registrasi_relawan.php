@@ -11,13 +11,12 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <p>Registrasi Forum Relawan</p>
+          <p>Registrasi Relawan</p>
         </div>
 
         <div class="row">
-
           <div class="col-lg-12">
-            <form method="post" role="form" action="<?= base_url('forum/registrasi/registrasi_forum') ?>" enctype="multipart/form-data"  class="php-email-form" >
+            <form method="post" role="form" action="<?= base_url('relawan/registrasi') ?>" enctype="multipart/form-data"  class="php-email-form" >
             <?php if($this->session->flashdata('msg')){echo $this->session->flashdata('msg');} ?>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
@@ -34,137 +33,69 @@
                   }?>
                 
                   </div>
-
                   <div class="col-lg-12 form-group ">
-                  <label for="nama_depan">Nama Lengkap Pendaftar</label>
-                    <input type="text" name="nama_lengkap" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['nama_lengkap'];
-                    } ;
-                    ?>" class="form-control" id="nama_depan" placeholder="Nama Lengkap Pendaftar"  />
+                  <label for="nama_depan">Nama Relawan</label>
+                    <input type="text" name="nama_lengkap" class="form-control" id="nama_depan" value="<?php echo set_value('nama_lengkap'); ?>" placeholder="Nama Lengkap Relawan"/>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['email'];
-                    } ;
-                    ?>"  />
-
-                  </div>
-                  <div class="col-lg-12 form-group">
-                  <label for="nama_depan">Nama Forum</label>
-                    <input type="text" class="form-control" name="nama_forum" placeholder="Nama Forum" id="nama_forum" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['nama_forum'];
-                    } ;
-                    ?>"  />
-
+                    <input type="email" name="email" class="form-control" id="email" value="<?php echo set_value('email'); ?>" placeholder="Email"/>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['password'];
-                    } ;
-                    ?>"  />
-
+                    <input type="password" name="password" class="form-control" id="password" value="<?php echo set_value('password'); ?>" placeholder="Password" />
                   </div>
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Konfirmasi Password</label>
-                    <input type="password" class="form-control" name="konfirmasi_password" id="konfirmasi_password" placeholder="Konfirmasi Password" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['konfirmasi_password'];
-                    } ;
-                    ?>"  />
+                    <input type="password" class="form-control" name="konfirmasi_password" id="konfirmasi_password" value="<?php echo set_value('konfirmasi_password'); ?>" placeholder="Konfirmasi Password" />
 
                   </div>
                 </div>
                 <div class="form-row">
                 <div class="col form-group">
-                  <label for="nama_depan">Logo Forum</label>
-                    <input type="file" name="logo" class="form-control"  placeholder="Password" />
-
-                  </div>
-                  <div class="col form-group">
-                  <label for="nama_depan">Tanggal Pendirian</label>
-                    <input type="date" class="form-control" name="tanggal_berdiri" id="tanggal_berdiri" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['tanggal_berdiri'];
-                    } ;
-                    ?>"  />
-
+                  <label for="nama_depan">Foto</label>
+                    <input type="file" name="foto" class="form-control"  placeholder="Password" />
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-lg-12 form-group">
-                  <label for="nama_depan">Lokasi</label>
-                    <textarea name="lokasi" class="form-control" id="exampleFormControlTextarea1" rows="3">
-                    <?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['lokasi'];
-                    } ;
-                    ?>
+                  <label for="nama_depan">Alamat</label>
+                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo set_value('alamat'); ?>
                     </textarea>
-
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-6 form-group">
                   <label for="nama_depan">Provinsi</label>
-                    <input type="text" name="provinsi" class="form-control" id="provinsi" placeholder="Provinsi" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['provinsi'];
-                    } ;
-                    ?>"  />
+                    <input type="text" name="provinsi" class="form-control" id="provinsi" value="<?php echo set_value('provinsi'); ?>" placeholder="Provinsi" />
 
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Kabupaten</label>
-                    <input type="text" name="kabupaten" class="form-control" id="kabupaten" placeholder="Kabupaten" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['kabupaten'];
-                    } ;
-                    ?>"  />
+                    <input type="text" name="kabupaten" class="form-control" id="kabupaten" value="<?php echo set_value('kabupaten'); ?>" placeholder="Kabupaten" />
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Kecamatan</label>
-                    <input type="text" name="kecamatan" class="form-control" id="kecamatan" placeholder="Kecamatan" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['kecamatan'];
-                    } ;
-                    ?>"  />
+                    <input type="text" name="kecamatan" class="form-control" id="kecamatan" value="<?php echo set_value('kecamatan'); ?>" placeholder="Kecamatan"/>
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Kode Pos</label>
-                    <input type="text" name="kode_pos" class="form-control" id="kode_pos" placeholder="Kode Pos" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['kode_pos'];
-                    } ;
-                    ?>"  />                  
+                    <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?php echo set_value('kode_pos'); ?>" placeholder="Kode Pos" />                  
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Telephone</label>
-                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" placeholder="Nomor Handphone"value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['nomor_handphone'];
-                    } ;
-                    ?>"  />
+                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" value="<?php echo set_value('nomor_handphone'); ?>" placeholder="Nomor Handphone"  />
                   </div>
-                  <div class="col-6 form-group">
-                  <label for="nama_depan">Website</label>
-                    <input type="text" name="website" class="form-control" id="website" placeholder="Website" value="<?php 
-                    if(validation_errors() != false) { 
-                      echo $data_validasi['website'];
-                    } ;
-                    ?>"  />                  
+                  <div class="col-lg-12 form-group">
+                  <label for="nama_depan">Deksripsi Keahlian</label>
+                    <textarea name="deskripsi_keahlian" class="form-control" value="<?php echo set_value('deskripsi_keahlian'); ?>" id="exampleFormControlTextarea1" rows="3"><?php echo set_value('deskripsi_keahlian'); ?></textarea>
                   </div>
               </div>
-              <div class="text-center"><button type="submit">REGISTERASI</button></div>
+              <div class="text-center"><button type="submit" name="kirim">REGISTERASI</button></div>
             </form>
           </div>
 

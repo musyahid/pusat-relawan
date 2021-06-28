@@ -62,10 +62,33 @@
                   </div>
                 </div>
                 <div class="form-row">
+                <div class="col form-group">
+                  <label for="nama_depan">Surat Keterangan Sehat</label>
+                    <input type="file" name="berkas_surat_keterangan_sehat" class="form-control"  placeholder="Password" />
+                  </div>
+                </div>
+                <div class="form-row">
+                <div class="col form-group">
+                  <label for="nama_depan">SKCK (Surat Keterangan Catatan Kepolisian)</label>
+                    <input type="file" name="berkas_skck" class="form-control"  placeholder="Password" />
+                  </div>
+                </div>
+                <div class="form-row">
+                <div class="col form-group">
+                  <label for="nama_depan">Surat Persetujuan Wali</label>
+                    <input type="file" name="berkas_surat_persetujuan_wali" class="form-control"  placeholder="Password" />
+                  </div>
+                </div>
+                <div class="form-row">
+                <div class="col form-group">
+                  <label for="nama_depan">Foto KTP</label>
+                    <input type="file" name="berkas_ktp" class="form-control"  placeholder="Password" />
+                  </div>
+                </div>
+                <div class="form-row">
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Alamat</label>
-                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo set_value('alamat'); ?>
-                    </textarea>
+                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo set_value('alamat'); ?></textarea>
                   </div>
                 </div>
                 <div class="form-row">

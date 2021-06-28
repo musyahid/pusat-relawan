@@ -40,7 +40,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Relawan</a></li>
+            <li><a href="<?= base_url('admin/relawan/list_relawan') ?>"><i class="fa fa-circle-o"></i> Relawan</a></li>
             <li><a href="<?= base_url('admin/forum_relawan/list_forum') ?>"><i class="fa fa-circle-o"></i> Forum Relawan</a></li>
             <li><a href="<?= base_url('admin/admin/list_admin') ?>"><i class="fa fa-circle-o"></i> Admin</a></li>
           </ul>
@@ -54,7 +54,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
+            <li><a href="<?= base_url('admin/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
             <li><a href="<?= base_url('admin/forum_relawan/list_pengajuan_forum') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN FORUM</a></li>
           </ul>
         </li>

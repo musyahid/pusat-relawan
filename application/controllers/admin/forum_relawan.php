@@ -7,16 +7,17 @@ class forum_relawan extends CI_Controller {
 	{
 		parent::__construct();
         $this->load->model('model_forum_relawan', 'forum_relawan');
+		$this->load->model('model_akun', 'akun');
 		$this->load->helper('tanggal');
 		if($this->session->userdata('login') == FALSE) {
-	    	redirect(base_url("admin/login"));
+	    	redirect(base_url("login"));
 	    }
     }
 
 	public function list_forum()
 	{
         $data['data_pengajuan'] = $this->forum_relawan->getAllForum();
-		$this->load->view('admin/forum_relawan/list_pengajuan', $data);
+		$this->load->view('admin/forum_relawan/list_forum', $data);
 	}
 	
 	public function list_pengajuan_forum()
@@ -30,7 +31,7 @@ class forum_relawan extends CI_Controller {
 		$id_akun = $_GET['id_akun'];
 		$this->akun->hapus_akun($id_akun);
 		echo $this->session->set_flashdata('msg','Dihapus');
-		redirect('admin/admin/list_admin');
+		redirect('admin/forum_relawan/list_pengajuan_forum');
 	}
 
     public function detail_pengajuan()

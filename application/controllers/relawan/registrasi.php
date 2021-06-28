@@ -39,7 +39,6 @@ class registrasi extends CI_Controller {
                 if ($this->upload->do_upload('foto'))
                 {
                     $foto = $this->upload->data();
-                    //Compress Image
                     $foto_name = $foto['file_name'];
 
                     $data = array(
@@ -49,18 +48,47 @@ class registrasi extends CI_Controller {
                         'nomor_handphone'	=> $this->input->post('nomor_handphone'),
                         'foto'              => $foto_name
                     );
+
+                    $config['upload_path'] 		= './assets/berkas_relawan'; //path folder
+                    $config['allowed_types']	= 'pdf'; //type yang dapat diakses bisa anda sesuaikan
+                    $config['max_size']         = 5120; // 5MB
+
+                    //UPLOAD berkas_surat_keterangan_sehat
+                    $this->upload->initialize($config);
+                    $this->upload->do_upload('berkas_surat_keterangan_sehat');
+                    $berkas_sks         = $this->upload->data();
+                    $berkas_sks_name    = $berkas_sks['file_name'];
+
+                    //UPLOAD berkas SKCK
+                    $this->upload->do_upload('berkas_skck');
+                    $berkas_skck        = $this->upload->data();
+                    $berkas_skck_name   = $berkas_skck['file_name'];
+
+                    //UPLOAD berkas surat_persetujuan_wali
+                    $this->upload->do_upload('berkas_surat_persetujuan_wali');
+                    $berkas_persetujuan         = $this->upload->data();
+                    $berkas_persetujuan_name    = $berkas_persetujuan['file_name'];
+
+                    //UPLOAD berkas berkas_ktp
+                    $this->upload->do_upload('berkas_ktp');
+                    $berkas_ktp      = $this->upload->data();
+                    $berkas_ktp_name = $berkas_ktp['file_name'];
     
                     //INSERT KE TABEL AKUN AND GET LAST ID AUTO INCREMENT
                     $last_id_akun = $this->registrasi->input_akun($data);
         
                     $data = array(
-                        'id_akun' 			    => $last_id_akun,
-                        'alamat' 		        => $this->input->post('alamat'),  
-                        'provinsi' 			    => $this->input->post('provinsi'), 
-                        'kabupaten'			    => $this->input->post('kabupaten'), 
-                        'kecamatan' 		    => $this->input->post('kecamatan'), 
-                        'kode_pos' 			    => $this->input->post('kode_pos'),
-                        'deskripsi_keahlian' 	=> $this->input->post('deskripsi_keahlian'),
+                        'id_akun' 			        => $last_id_akun,
+                        'alamat' 		            => $this->input->post('alamat'),  
+                        'provinsi' 			        => $this->input->post('provinsi'), 
+                        'kabupaten'			        => $this->input->post('kabupaten'), 
+                        'kecamatan' 		        => $this->input->post('kecamatan'), 
+                        'kode_pos' 			        => $this->input->post('kode_pos'),
+                        'deskripsi_keahlian' 	    => $this->input->post('deskripsi_keahlian'),
+                        'surat_keterangan_sehat'    => $berkas_sks_name,
+                        'skck'                      => $berkas_skck_name,
+                        'surat_persetujuan_wali'    => $berkas_persetujuan_name,
+                        'foto_ktp'                  => $berkas_ktp_name
                     );
                     //INSERT KE TABEL FORUM
                     $this->relawan->input_relawan($data);
@@ -71,6 +99,8 @@ class registrasi extends CI_Controller {
                         <i class="ace-icon fa fa-bullhorn green"></i> REGISTRASI BERHASIL. SILAHKAN LOGIN
                     </div>');
                     redirect(base_url('relawan/registrasi'));
+                } else {
+
                 }
             }else{
                 $this->load->view('relawan/registrasi_relawan');

@@ -52,6 +52,7 @@
                   <td width="30"><img src="<?= base_url('assets/images/logo_forum/'.$data->logo);  ?>" alt="" width="70"></td>
                   <td>
                     <center>
+                    <a href="<?php echo base_url() ?>admin/forum_relawan/detail_forum?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                     <a href="<?php echo site_url() ?>admin/forum_relawan/hapus_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </center>
                 </td>

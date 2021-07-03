@@ -12,15 +12,26 @@
         <ul>
           <li class="active"><a href="<?= base_url('beranda') ?>">Beranda</a></li>
           <li><a href="#about">Cari Forum</a></li>
-          <li><a href="#about">Cari Relawan</a></li>
           <li><a href="#about">Cari Pelatihan</a></li>
-          <li><a href="#about">Data Relawan</a></li>
           <li><a href="#portfolio">Tentang Kami</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="<?= base_url('registrasi') ?>" class="get-started-btn">REGISTRASI</a>
-      <a href="<?= base_url('login') ?>" class="get-started-btn">LOGIN</a>
+
+
+      <?php if (isset($_SESSION['login_relawan']) == true) { ?>
+
+        
+      <a href="<?= base_url('registrasi') ?>" class="get-started-btn"><?= $this->session->userdata('nama_lengkap') ?></a>
+      <a href="<?= base_url('logout') ?>" class="get-started-btn">LOGOUT</a>
+
+      <?php } else { ?>
+
+        <a href="<?= base_url('registrasi') ?>" class="get-started-btn">REGISTRASI</a>
+        <a href="<?= base_url('login') ?>" class="get-started-btn">LOGIN</a>
+      
+      <?php } ?>
+
 
     </div>
   </header><!-- End Header -->

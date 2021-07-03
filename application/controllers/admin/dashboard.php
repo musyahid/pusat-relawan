@@ -7,8 +7,8 @@ class dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_akun', 'akun');
-		if($this->session->userdata('login') == FALSE) {
-	    	redirect(base_url("admin/login"));
+		if($this->session->userdata('login_admin') == FALSE) {
+	    	redirect(base_url("login"));
 	    }
     }
 	

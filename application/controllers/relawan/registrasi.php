@@ -55,6 +55,7 @@ class registrasi extends CI_Controller {
 
                     //UPLOAD berkas_surat_keterangan_sehat
                     $this->upload->initialize($config);
+                    
                     $this->upload->do_upload('berkas_surat_keterangan_sehat');
                     $berkas_sks         = $this->upload->data();
                     $berkas_sks_name    = $berkas_sks['file_name'];

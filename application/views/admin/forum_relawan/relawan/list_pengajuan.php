@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Forum Relawan
+        Data Pengajuan Relawan
       </h1>
     </section>
 
@@ -31,7 +31,7 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Penanggung Jawab</th>
+                  <th>Nama Lengkap</th>
                   <th>Email</th>
                   <th>Nomor Handphone</th>
                   <th>Foto</th>
@@ -47,12 +47,11 @@
                   <td><?= $data->nama_lengkap ?></td>
                   <td><?= $data->email ?></td>
                   <td><?= $data->nomor_handphone ?></td>
-                  <td><?= $data->email ?></td>
                   <td width="30"><img src="<?= base_url('assets/images/foto_relawan/'.$data->foto);  ?>" alt="" width="70"></td>
                   <td>
                     <center>
-                    <a href="<?php echo base_url() ?>admin/relawan/detail_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                    <a href="<?php echo site_url() ?>admin/relawan/hapus_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <a href="<?php echo base_url() ?>forum/relawan/detail_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <a href="<?php echo site_url() ?>forum/relawan/hapus_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </center>
                 </td>
                 </tr>

@@ -57,31 +57,31 @@
                 </div>
                 <div class="form-row">
                 <div class="col form-group">
-                  <label for="nama_depan">Foto</label>
+                  <label for="nama_depan">Foto <strong>*jpg|png|jpeg</strong></label>
                     <input type="file" name="foto" class="form-control"  placeholder="Password" />
                   </div>
                 </div>
                 <div class="form-row">
                 <div class="col form-group">
-                  <label for="nama_depan">Surat Keterangan Sehat</label>
+                  <label for="nama_depan">Surat Keterangan Sehat <strong>*PDF</strong></label>
                     <input type="file" name="berkas_surat_keterangan_sehat" class="form-control"  placeholder="Password" />
                   </div>
                 </div>
                 <div class="form-row">
                 <div class="col form-group">
-                  <label for="nama_depan">SKCK (Surat Keterangan Catatan Kepolisian)</label>
+                  <label for="nama_depan">SKCK (Surat Keterangan Catatan Kepolisian) <strong>*PDF</strong></label>
                     <input type="file" name="berkas_skck" class="form-control"  placeholder="Password" />
                   </div>
                 </div>
                 <div class="form-row">
                 <div class="col form-group">
-                  <label for="nama_depan">Surat Persetujuan Wali</label>
+                  <label for="nama_depan">Surat Persetujuan Wali <strong>*PDF</strong></label>
                     <input type="file" name="berkas_surat_persetujuan_wali" class="form-control"  placeholder="Password" />
                   </div>
                 </div>
                 <div class="form-row">
                 <div class="col form-group">
-                  <label for="nama_depan">Foto KTP</label>
+                  <label for="nama_depan">Foto KTP <strong>*PDF</strong></label>
                     <input type="file" name="berkas_ktp" class="form-control"  placeholder="Password" />
                   </div>
                 </div>

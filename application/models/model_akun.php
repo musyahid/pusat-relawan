@@ -30,6 +30,15 @@ class model_akun extends CI_Model {
         return $query->result();
     }
 
+    public function get_data_relawan($id_akun){
+        $this->db->from('akun a');
+        $this->db->join('relawan f', 'a.id_akun = f.id_akun');
+        $this->db->where('a.id_akun', $id_akun);
+   
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function hapus_akun($id_akun)
     {
         $this->db->where('id_akun', $id_akun);

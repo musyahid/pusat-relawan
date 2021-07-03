@@ -9,15 +9,15 @@ class admin extends CI_Controller {
         $this->load->model('model_registrasi', 'registrasi');
 		$this->load->model('model_admin', 'admin');
 		$this->load->model('model_akun', 'akun');
-		if($this->session->userdata('login') == FALSE) {
-	    	redirect(base_url("admin/login"));
+		if($this->session->userdata('login_admin') == FALSE) {
+	    	redirect(base_url("login"));
 	    }
     }
 	
 	public function list_admin()
 	{
         $data['data_admin'] = $this->admin->getAllAdmin();
-		$this->load->view('admin/admin/list_admin', $data);
+		$this->load->view('admin/admin/admin/list_admin', $data);
 	}
 
 
@@ -76,7 +76,7 @@ class admin extends CI_Controller {
                 $this->load->view('admin/admin/tambah_admin');
             }
         }else { 
-            $this->load->view('admin/admin/tambah_admin');
+            $this->load->view('admin/admin/admin/tambah_admin');
         }
     }
 

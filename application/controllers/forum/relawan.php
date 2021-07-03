@@ -8,7 +8,7 @@ class relawan extends CI_Controller {
 		parent::__construct();
         $this->load->model('model_relawan', 'relawan');
         $this->load->model('model_akun', 'akun');
-		if($this->session->userdata('login_admin') == FALSE) {
+		if($this->session->userdata('login_forum') == FALSE) {
 	    	redirect(base_url("login"));
 	    }
     }
@@ -16,13 +16,13 @@ class relawan extends CI_Controller {
 	public function list_relawan()
 	{
         $data['data_relawan'] = $this->relawan->getAllRelawan();
-		$this->load->view('admin/admin/relawan/list_relawan', $data);
+		$this->load->view('admin/forum_relawan/relawan/list_relawan', $data);
 	}
 	
 	public function list_pengajuan_relawan()
 	{
         $data['data_pengajuan'] = $this->relawan->getAllPengajuan();
-		$this->load->view('admin/admin/relawan/list_pengajuan', $data);
+		$this->load->view('admin/forum_relawan/relawan/list_pengajuan', $data);
 	}
 
     public function hapus_pengajuan()
@@ -30,21 +30,21 @@ class relawan extends CI_Controller {
 		$id_akun = $_GET['id_akun'];
 		$this->akun->hapus_akun($id_akun);
 		echo $this->session->set_flashdata('msg','Dihapus');
-		redirect('admin/relawan/list_relawan');
+		redirect('forum/relawan/list_relawan');
 	}
 
     public function detail_pengajuan()
 	{
 		$id_akun = $_GET['id_akun'];
 		$data['pengajuan_relawan'] = $this->relawan->getPengajuanById($id_akun);
-		$this->load->view('admin/admin/relawan/detail_pengajuan', $data);
+		$this->load->view('admin/forum_relawan/relawan/detail_pengajuan', $data);
 	}
 
 	public function detail_relawan()
 	{
 		$id_akun = $_GET['id_akun'];
 		$data['data_relawan'] = $this->relawan->getPengajuanById($id_akun);
-		$this->load->view('admin/admin/relawan/detail_relawan', $data);
+		$this->load->view('admin/forum_relawan/relawan/detail_relawan', $data);
 	}
 
 
@@ -53,6 +53,6 @@ class relawan extends CI_Controller {
 		$id_relawan = $_GET['id_relawan'];
 		$this->relawan->accPengajuanRelawan($id_relawan);
 		echo $this->session->set_flashdata('msg','Ditambah');
-		redirect('admin/relawan/list_relawan');
+		redirect('forum/relawan/list_relawan');
 	}
 }

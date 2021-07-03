@@ -28,6 +28,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+        <?php if (isset($_SESSION['login_admin']) == true) { ?>
         <li class="active treeview">
           <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
         </li>
@@ -54,10 +55,39 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
             <li><a href="<?= base_url('admin/forum_relawan/list_pengajuan_forum') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN FORUM</a></li>
           </ul>
         </li>
+        <?php } elseif (isset($_SESSION['login_forum']) == true) { ?>
+          <li class="active treeview">
+            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-pie-chart"></i>
+              <span>DATA AKUN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url('forum/relawan/list_relawan') ?>"><i class="fa fa-circle-o"></i> Relawan</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-pie-chart"></i>
+              <span>DATA PENGAJUAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url('forum/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
+              <li><a href="<?= base_url('admin/forum_relawan/list_pengajuan_forum') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN BENCANA</a></li>
+            </ul>
+          </li>
+        <?php } ?>
       </ul>
     </section>
     <!-- /.sidebar -->

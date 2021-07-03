@@ -104,10 +104,10 @@ class registrasi extends CI_Controller {
 
                 }
             }else{
-                $this->load->view('relawan/registrasi_relawan');
+                $this->load->view('front/relawan/registrasi_relawan');
             }
         }else {
-            $this->load->view('relawan/registrasi_relawan');
+            $this->load->view('front/relawan/registrasi_relawan');
         }
     }
 }

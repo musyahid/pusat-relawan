@@ -14,7 +14,7 @@ class dashboard extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('admin/dashboard');
+		$this->load->view('back/admin/dashboard');
 	}
 
 }

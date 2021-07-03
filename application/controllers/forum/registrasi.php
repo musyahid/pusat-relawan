@@ -13,7 +13,7 @@ class registrasi extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('forum/registrasi_forum');
+		$this->load->view('front/forum/registrasi_forum');
 	}
 
     public function registrasi_forum() 
@@ -98,7 +98,7 @@ class registrasi extends CI_Controller {
 				redirect(base_url('forum/registrasi/registrasi_forum'));
 			}
 		}else{
-			$this->load->view('forum/registrasi_forum', $data);
+			$this->load->view('front/forum/registrasi_forum', $data);
 		}
     }
 }

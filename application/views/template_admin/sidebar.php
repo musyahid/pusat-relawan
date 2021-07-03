@@ -30,7 +30,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <?php if (isset($_SESSION['login_admin']) == true) { ?>
         <li class="active treeview">
-          <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+          <li><a href="<?= base_url('admin/dashboard') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
         </li>
         <li class="treeview">
           <a href="#">
@@ -61,6 +61,9 @@
         <?php } elseif (isset($_SESSION['login_forum']) == true) { ?>
           <li class="active treeview">
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+          </li>
+          <li class="active treeview">
+            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>DATA ABENCANA</span></a></li>
           </li>
           <li class="treeview">
             <a href="#">

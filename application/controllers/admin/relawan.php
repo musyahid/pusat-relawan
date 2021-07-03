@@ -16,7 +16,7 @@ class relawan extends CI_Controller {
 	public function list_relawan()
 	{
         $data['data_relawan'] = $this->relawan->getAllRelawan();
-		$this->load->view('admin/admin/relawan/list_relawan', $data);
+		$this->load->view('back/admin/relawan/list_relawan', $data);
 	}
 	
 	public function list_pengajuan_relawan()

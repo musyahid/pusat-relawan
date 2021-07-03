@@ -17,7 +17,7 @@ class admin extends CI_Controller {
 	public function list_admin()
 	{
         $data['data_admin'] = $this->admin->getAllAdmin();
-		$this->load->view('admin/admin/admin/list_admin', $data);
+		$this->load->view('back/admin/admin/list_admin', $data);
 	}
 
 
@@ -73,10 +73,10 @@ class admin extends CI_Controller {
                     
                 }
             }else { 
-                $this->load->view('admin/admin/tambah_admin');
+                $this->load->view('back/admin/admin/tambah_admin');
             }
         }else { 
-            $this->load->view('admin/admin/admin/tambah_admin');
+            $this->load->view('back/admin/admin/tambah_admin');
         }
     }
 

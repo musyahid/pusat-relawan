@@ -27,7 +27,7 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-header">
-            <a class="btn btn-info" href="<?php echo site_url('admin/admin/tambah_admin') ?>" ><i class="glyphicon glyphicon-plus"></i> Tambah Admin</a>
+            <a class="btn btn-info" href="<?php echo site_url('forum/bencana/tambah_bencana') ?>" ><i class="glyphicon glyphicon-plus"></i> Tambah Admin</a>
             </div>
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">

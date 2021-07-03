@@ -1,4 +1,7 @@
 const flashData = $('.flash-data').data('flashdata');
+const flashDataErrors = $('.flash-data-errors').data('flashdata');
+
+console.log(flashDataErrors);
 
 if( flashData ) {
   swal({
@@ -6,7 +9,11 @@ if( flashData ) {
     icon: "success",
     button: "Ok",
     });
-} 
+} else if (flashDataErrors) {
+  swal(flashDataErrors, {
+    icon: "error",  
+  });
+}
 
 $('.tombol-hapus').on('click', function(e){
   e.preventDefault(); //cancel default action

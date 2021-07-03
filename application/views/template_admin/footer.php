@@ -264,6 +264,46 @@
     //Initialize Select2 Elements
     $('.select2').select2()
   })
+
+  //leafletjs
+  var curLocation=[0,0];
+  if (curLocation[0]==0 && curLocation[1]==0) {
+    curLocation =[-0.21972602392080884, 101.64338275748243];	
+  }
+
+  var mymap = L.map('mapid').setView([-0.21972602392080884, 101.64338275748243], 5);
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    id: 'mapbox/streets-v10',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+
+mymap.attributionControl.setPrefix(false);
+
+var marker = new L.marker(curLocation, {
+	draggable:'true'
+});
+
+marker.on('dragend', function(event) {
+var position = marker.getLatLng();
+marker.setLatLng(position,{
+	draggable : 'true'
+	}).bindPopup(position).update();
+	$("#Latitude").val(position.lat);
+	$("#Longitude").val(position.lng).keyup();
+});
+
+$("#Latitude, #Longitude").change(function(){
+	var position =[parseInt($("#Latitude").val()), parseInt($("#Longitude").val())];
+	marker.setLatLng(position, {
+	draggable : 'true'
+	}).bindPopup(position).update();
+	mymap.panTo(position);
+});
+mymap.addLayer(marker);
 </script>
 </body>
 </html>

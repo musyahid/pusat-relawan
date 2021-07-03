@@ -15,7 +15,8 @@ class bencana extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('back/forum_relawan/bencana/list_bencana');
+        $data['data_bencana'] = $this->bencana->getAllBencana();
+		$this->load->view('back/forum_relawan/bencana/list_bencana', $data);
 	}
 
     public function tambah_bencana()
@@ -91,6 +92,14 @@ class bencana extends CI_Controller {
             }else{
                 return true;
             }
+	}
+
+    public function hapus_bencana()
+	{
+		$id_bencana = $_GET['id_bencana'];
+		$this->bencana->hapus_bencana($id_bencana);
+		echo $this->session->set_flashdata('msg','Dihapus');
+		redirect('forum/bencana');
 	}
 
 }

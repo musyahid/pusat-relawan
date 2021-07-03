@@ -16,16 +16,16 @@ class relawan extends CI_Controller {
 	public function list_relawan()
 	{
         $data['data_relawan'] = $this->relawan->getAllRelawan();
-		$this->load->view('admin/forum_relawan/relawan/list_relawan', $data);
+		$this->load->view('back/relawan/list_relawan', $data);
 	}
 	
 	public function list_pengajuan_relawan()
 	{
         $data['data_pengajuan'] = $this->relawan->getAllPengajuan();
-		$this->load->view('admin/forum_relawan/relawan/list_pengajuan', $data);
+		$this->load->view('back/relawan/list_pengajuan', $data);
 	}
 
-    public function hapus_pengajuan()
+    public function hapus_relawan()
 	{
 		$id_akun = $_GET['id_akun'];
 		$this->akun->hapus_akun($id_akun);

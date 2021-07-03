@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Pengajuan Relawan
+        Data Relawan
       </h1>
     </section>
 
@@ -41,7 +41,7 @@
                 <tbody>
                 <?php   
                 $no = 1;
-                foreach ($data_pengajuan as $data) { ?>
+                foreach ($data_relawan as $data) { ?>
                 <tr>
                   <td><?= $no++ ?></td>
                   <td><?= $data->nama_lengkap ?></td>
@@ -50,8 +50,8 @@
                   <td width="30"><img src="<?= base_url('assets/images/foto_relawan/'.$data->foto);  ?>" alt="" width="70"></td>
                   <td>
                     <center>
-                    <a href="<?php echo base_url() ?>forum/relawan/detail_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                    <a href="<?php echo site_url() ?>forum/relawan/hapus_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <a href="<?php echo base_url() ?>forum/relawan/detail_relawan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <a href="<?php echo site_url() ?>forum/relawan/hapus_relawan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </center>
                 </td>
                 </tr>

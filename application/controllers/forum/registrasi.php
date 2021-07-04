@@ -7,7 +7,7 @@ class registrasi extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_registrasi', 'registrasi');
-		$this->load->model('model_forum', 'forum');
+		$this->load->model('model_forum_relawan', 'forum');
 		
     }
 

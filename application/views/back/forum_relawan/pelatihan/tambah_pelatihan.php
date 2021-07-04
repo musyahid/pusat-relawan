@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Bencana
+        Tambah Pelatihan
       </h1>
     </section>
 
@@ -68,10 +68,10 @@
                         <label>ALAMAT LENGKAP</label>
                         <TEXTarea name="alamat_lengkap" class="form-control" placeholder="Alamat Lengkap"><?php echo set_value('alamat_lengkap'); ?></TEXTarea>
                     </div>
-                    <div class="form-group <?php if(form_error('link_berita')) echo 'has-error' ?>">
+                    <div class="form-group <?php if(form_error('link_berita_bencana')) echo 'has-error' ?>">
                         <label>LINK BERITA BENCANA</label>
-                        <input type="text" name="link_berita" value="<?php echo set_value('link_berita'); ?>" class="form-control" placeholder="Link Berita Bencana">
-                        <span class="help-block"><?php echo form_error('link_berita'); ?></span>
+                        <input type="text" name="link_berita_bencana" value="<?php echo set_value('link_berita_bencana'); ?>" class="form-control" placeholder="Link Berita Bencana">
+                        <span class="help-block"><?php echo form_error('link_berita_bencana'); ?></span>
                     </div>
                     <!-- /.form group -->
                 </div>

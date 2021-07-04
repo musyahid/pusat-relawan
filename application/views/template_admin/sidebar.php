@@ -63,7 +63,10 @@
             <li><a href="<?= base_url('forum/dashboard') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
           </li>
           <li class="active treeview">
-            <li><a href="<?= base_url('forum/bencana') ?>"><i class="fa fa-book"></i> <span>DATA ABENCANA</span></a></li>
+            <li><a href="<?= base_url('forum/bencana') ?>"><i class="fa fa-book"></i> <span>DATA BENCANA</span></a></li>
+          </li>
+          <li class="active treeview">
+            <li><a href="<?= base_url('forum/pelatihan') ?>"><i class="fa fa-book"></i> <span>DATA PELATIHAN</span></a></li>
           </li>
           <li class="treeview">
             <a href="#">
@@ -87,7 +90,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url('forum/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
-              <li><a href="<?= base_url('admin/forum_relawan/list_pengajuan_forum') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN BENCANA</a></li>
             </ul>
           </li>
         <?php } ?>

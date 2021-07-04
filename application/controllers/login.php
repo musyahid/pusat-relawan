@@ -92,7 +92,7 @@ class login extends CI_Controller {
                 //TAMPILKAN PESAN KETIKA GAGAL LOGIN
                 $this->session->set_flashdata('msg', '
                 <div class="alert alert-block alert-danger"></i></button>
-                <i class="ace-icon fa fa-bullhorn green"></i> EMAIL ATAU PASSWORD SALAH
+                <i class="ace-icon fa fa-bullhorn green"></i> EMAIL ATAU PASSWORD SALAH / AKUN BELUM DIAKTIVASI ADMIN
                 </div>');
                 redirect(base_url('login'));
             }

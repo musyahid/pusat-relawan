@@ -147,7 +147,7 @@
             <tr>
               <td colspan="5"> 
                 <center>
-                    <a href="<?php echo base_url() ?>forum/relawan/acc_pengajuan?id_relawan=<?php echo $pengajuan_relawan[0]->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="" aria-hidden="true"></span> SETUJUI</a>
+                    <a href="<?php echo base_url() ?>admin/relawan/acc_pengajuan?id_relawan=<?php echo $pengajuan_relawan[0]->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="" aria-hidden="true"></span> SETUJUI</a>
                 </center>
               </td>
             </tr>

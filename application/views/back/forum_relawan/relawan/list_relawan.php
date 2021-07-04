@@ -50,8 +50,8 @@
                   <td width="30"><img src="<?= base_url('assets/images/foto_relawan/'.$data->foto);  ?>" alt="" width="70"></td>
                   <td>
                     <center>
-                    <a href="<?php echo base_url() ?>forum/relawan/detail_relawan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                    <a href="<?php echo site_url() ?>forum/relawan/hapus_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <a href="<?php echo base_url() ?>forum/relawan/detail_relawan?id_relawan=<?php echo $data->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <a href="<?php echo site_url() ?>forum/relawan/hapus_relawan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </center>
                 </td>
                 </tr>

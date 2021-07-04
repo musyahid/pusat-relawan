@@ -16,9 +16,14 @@ class relawan extends CI_Controller {
 	public function list_relawan()
 	{
         $data['data_relawan'] = $this->relawan->getAllRelawan();
-		$this->load->view('back/relawan/list_relawan', $data);
+		$this->load->view('back/admin/relawan/list_relawan', $data);
 	}
 	
+	public function list_pengajuan_relawan()
+	{
+        $data['data_pengajuan'] = $this->relawan->getAllPengajuan();
+		$this->load->view('back/admin/relawan/list_pengajuan', $data);
+	}
 
     public function hapus_relawan()
 	{
@@ -32,14 +37,14 @@ class relawan extends CI_Controller {
 	{
 		$id_akun = $_GET['id_akun'];
 		$data['pengajuan_relawan'] = $this->relawan->getPengajuanById($id_akun);
-		$this->load->view('admin/admin/relawan/detail_pengajuan', $data);
+		$this->load->view('back/admin/relawan/detail_pengajuan', $data);
 	}
 
 	public function detail_relawan()
 	{
 		$id_akun = $_GET['id_akun'];
 		$data['data_relawan'] = $this->relawan->getPengajuanById($id_akun);
-		$this->load->view('admin/admin/relawan/detail_relawan', $data);
+		$this->load->view('back/admin/relawan/detail_relawan', $data);
 	}
 
 

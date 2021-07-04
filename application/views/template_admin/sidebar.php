@@ -49,13 +49,14 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>DATA PENGAJUAN</span>
+            <span>DATA PENGAJUAN AKUN</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/forum_relawan/list_pengajuan_forum') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN FORUM</a></li>
+            <li><a href="<?= base_url('admin/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
           </ul>
         </li>
         <?php } elseif (isset($_SESSION['login_forum']) == true) { ?>
@@ -68,18 +69,10 @@
           <li class="active treeview">
             <li><a href="<?= base_url('forum/pelatihan') ?>"><i class="fa fa-book"></i> <span>DATA PELATIHAN</span></a></li>
           </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-pie-chart"></i>
-              <span>DATA AKUN</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-              </a>
-            <ul class="treeview-menu">
-              <li><a href="<?= base_url('forum/relawan/list_relawan') ?>"><i class="fa fa-circle-o"></i> Relawan</a></li>
-            </ul>
+          <li class="active treeview">
+            <li><a href="<?= base_url('forum/relawan') ?>"><i class="fa fa-book"></i> <span>DATA RELAWAN</span></a></li>
           </li>
+
           <li class="treeview">
             <a href="#">
               <i class="fa fa-pie-chart"></i>

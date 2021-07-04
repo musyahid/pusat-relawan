@@ -6,53 +6,46 @@ class relawan extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('model_relawan', 'relawan');
-        $this->load->model('model_akun', 'akun');
+		$this->load->model('model_akun', 'akun');
+		$this->load->model('model_forum_relawan', 'relawan');
+		$this->load->model('model_relawan', 'forum_relawan');
 		if($this->session->userdata('login_forum') == FALSE) {
 	    	redirect(base_url("login"));
 	    }
     }
 
-	public function list_relawan()
+	public function index()
 	{
-        $data['data_relawan'] = $this->relawan->getAllRelawan();
-		$this->load->view('back/relawan/list_relawan', $data);
+		$data['data_relawan'] = $this->forum_relawan->getAllRelawan();
+		$this->load->view('back/forum_relawan/relawan/list_relawan', $data);
 	}
 	
-	public function list_pengajuan_relawan()
-	{
-        $data['data_pengajuan'] = $this->relawan->getAllPengajuan();
-		$this->load->view('back/relawan/list_pengajuan', $data);
-	}
-
-    public function hapus_relawan()
-	{
-		$id_akun = $_GET['id_akun'];
-		$this->akun->hapus_akun($id_akun);
-		echo $this->session->set_flashdata('msg','Dihapus');
-		redirect('forum/relawan/list_relawan');
-	}
-
-    public function detail_pengajuan()
-	{
-		$id_akun = $_GET['id_akun'];
-		$data['pengajuan_relawan'] = $this->relawan->getPengajuanById($id_akun);
-		$this->load->view('admin/forum_relawan/relawan/detail_pengajuan', $data);
-	}
-
 	public function detail_relawan()
 	{
-		$id_akun = $_GET['id_akun'];
-		$data['data_relawan'] = $this->relawan->getPengajuanById($id_akun);
-		$this->load->view('admin/forum_relawan/relawan/detail_relawan', $data);
+		$id_relawan = $_GET['id_relawan'];
+		$data['data_relawan'] = $this->forum_relawan->getRelawanById($id_relawan);
+		$this->load->view('back/forum_relawan/relawan/detail_relawan', $data);
+	}
+	public function list_pengajuan_relawan()
+	{
+        $data['data_pengajuan'] = $this->relawan->getAllPengajuanRelawan();
+		$this->load->view('back/forum_relawan/relawan/list_pengajuan', $data);
 	}
 
+	public function detail_pengajuan_relawan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$data['pengajuan_relawan'] = $this->relawan->getPengajuanRelawanById($id_relawan);
+		$this->load->view('back/forum_relawan/relawan/detail_pengajuan', $data);
+	}
 
-	public function acc_pengajuan()
+	public function acc_pengajuan_relawan()
 	{
 		$id_relawan = $_GET['id_relawan'];
 		$this->relawan->accPengajuanRelawan($id_relawan);
 		echo $this->session->set_flashdata('msg','Ditambah');
-		redirect('forum/relawan/list_relawan');
+		redirect('forum/relawan');
 	}
+
+
 }

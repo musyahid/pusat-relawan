@@ -16,6 +16,7 @@ class model_akun extends CI_Model {
         $this->db->from('akun a');
         $this->db->join('forum f', 'a.id_akun = f.id_akun');
         $this->db->where('a.id_akun', $id_akun);
+        $this->db->where('status_pengajuan', 1);
    
         $query = $this->db->get();
         return $query->result();
@@ -34,6 +35,7 @@ class model_akun extends CI_Model {
         $this->db->from('akun a');
         $this->db->join('relawan f', 'a.id_akun = f.id_akun');
         $this->db->where('a.id_akun', $id_akun);
+        $this->db->where('status_pengajuan', 1);
    
         $query = $this->db->get();
         return $query->result();

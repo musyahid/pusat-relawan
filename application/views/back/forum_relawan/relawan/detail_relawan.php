@@ -14,7 +14,7 @@
           <div class="box">
              <div class="box-header">
               <tbody>
-             <h3>Detail Relawan <span class="badge badge-secondary"><?=$data_relawan[0]->nama_lengkap ?></span></h3>
+             <h3>Detail Pengajuan Relawan <span class="badge badge-secondary"><?=$data_relawan[0]->nama_lengkap ?></span></h3>
               </tbody>
             </div>
         <table class="table table-striped">
@@ -140,6 +140,14 @@
               <th scope="row"></th>
               <td><b>Foto KTP</b></td>
               <td>:  <a href="<?= base_url('assets/berkas_relawan/'.$data_relawan[0]->surat_keterangan_sehat); ?>" class="btn btn-sm btn-primary "> <span class="" aria-hidden="true"></span> DOWNLOAD</a></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td><b>Alasan Bergabung</b></td>
+              <td>: <?php echo $data_relawan[0]->alasan_bergabung ?></td>
               <td></td>
               <td></td>
               <td></td>

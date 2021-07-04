@@ -145,9 +145,17 @@
               <td></td>
             </tr>
             <tr>
+              <th scope="row"></th>
+              <td><b>Alasan Bergabung</b></td>
+              <td>: <?php echo $pengajuan_relawan[0]->alasan_bergabung ?></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
               <td colspan="5"> 
                 <center>
-                    <a href="<?php echo base_url() ?>forum/relawan/acc_pengajuan?id_relawan=<?php echo $pengajuan_relawan[0]->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="" aria-hidden="true"></span> SETUJUI</a>
+                    <a href="<?php echo base_url() ?>forum/relawan/acc_pengajuan_relawan?id_relawan=<?php echo $pengajuan_relawan[0]->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="" aria-hidden="true"></span> SETUJUI</a>
                 </center>
               </td>
             </tr>

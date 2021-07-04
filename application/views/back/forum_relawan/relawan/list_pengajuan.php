@@ -31,31 +31,29 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Lengkap</th>
-                  <th>Email</th>
-                  <th>Nomor Handphone</th>
-                  <th>Foto</th>
+                  <th>Nama Forum</th>
+                  <th>Nama Relawan</th>
+                  <th>alasan_bergabung</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php   
-                $no = 1;
-                foreach ($data_pengajuan as $data) { ?>
-                <tr>
-                  <td><?= $no++ ?></td>
-                  <td><?= $data->nama_lengkap ?></td>
-                  <td><?= $data->email ?></td>
-                  <td><?= $data->nomor_handphone ?></td>
-                  <td width="30"><img src="<?= base_url('assets/images/foto_relawan/'.$data->foto);  ?>" alt="" width="70"></td>
-                  <td>
-                    <center>
-                    <a href="<?php echo base_url() ?>forum/relawan/detail_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                    <a href="<?php echo site_url() ?>forum/relawan/hapus_pengajuan?id_akun=<?php echo $data->id_akun; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                    </center>
-                </td>
-                </tr>
-                <?php } ?>
+                  <?php 
+                  $no = 1;
+                  foreach ($data_pengajuan as $data) { ?>
+                  <tr>
+                      <td><?= $no++ ?></td>
+                      <td><?= $data->nama_forum?></td>
+                      <td><?= $data->nama_lengkap ?></td>
+                      <td><?= $data->alasan_bergabung ?><td>
+                      <center>
+                        <a href="<?php echo base_url() ?>forum/relawan/detail_pengajuan_relawan?id_relawan=<?php echo $data->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                        <a href="<?php echo site_url() ?>forum/bencana/hapus_bencana?id_relawan=<?php echo $data->id_relawan; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                      </center>
+                      </td>
+                  </tr>
+
+                  <?php } ?>
               </table>
             </div>
             <!-- /.box-body -->

@@ -7,6 +7,7 @@ class pelatihan extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_pelatihan', 'pelatihan');
+		$this->load->model('model_kategori_pelatihan', 'kategori_pelatihan');
 		if($this->session->userdata('login_forum') == FALSE) {
 	    	redirect(base_url("login"));
 	    }
@@ -14,83 +15,136 @@ class pelatihan extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('back/forum_relawan/pelatihan/list_pelatihan');
+        $data['data_pelatihan'] = $this->pelatihan->getAllPelatihan();
+		$this->load->view('back/forum_relawan/pelatihan/list_pelatihan', $data);
 	}
 
 
     public function tambah_pelatihan()
     {
         if(isset($_POST['kirim'])) {
-            $this->form_validation->set_rules('nama_bencana', 'Nama Bencana', 'required');
-            $this->form_validation->set_rules('kategori_bencana', 'Kategori Bencana', 'required');
-            $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
-            $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required');
-            $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
-            $this->form_validation->set_rules('alamat_lengkap', 'Alamat Lengkap', 'required');
-            $this->form_validation->set_rules('link_berita_bencana', 'Link Berita', 'required');
-            $this->form_validation->set_rules('latitude', 'Latitude', 'required');
-            $this->form_validation->set_rules('longitude', 'Longitude', 'required');
-            $this->form_validation->set_rules('warna', 'Warna', 'required');
-            $this->form_validation->set_rules('gambar', 'Gambar', 'callback_file_selected');
+            $this->form_validation->set_rules('nama_pelatihan', 'Nama Peltihan', 'required');
+            $this->form_validation->set_rules('kategori_pelatihan', 'Kategori pelatihan', 'required');
+            $this->form_validation->set_rules('id_jenis_pelatihan', 'Jenis Pelatihan', 'required');
+            $this->form_validation->set_rules('tanggal_pelatihan', 'Tanggal Pelatihan', 'required');
+            $this->form_validation->set_rules('waktu_pelatihan', 'Waktu Pelatihan', 'required');
+            $this->form_validation->set_rules('kuota_pelatihan', 'Kuota ', 'required');
+            $this->form_validation->set_rules('deskripsi_pelatihan', 'Deskripsi Pelatihan ', 'required');
 			$this->form_validation->set_message('required', '{field} mohon diisi');
 
 		    $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
             if($this->form_validation->run() != false) {
 
-                $config['upload_path'] 		= './assets/images/gambar_bencana'; //path folder
-                $config['allowed_types']	= 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-                $config['max_size']         = 1024; // 1MB
-                $config['encrypt_name'] 	= TRUE; //nama yang terupload nantinya
-        
-                $this->upload->initialize($config);
-                if ($this->upload->do_upload('gambar'))
-                {
-                    $gambar = $this->upload->data();
-				    $gambar_name = $gambar['file_name'];
+            $tanggal_pelatihan = $this->input->post('tanggal_pelatihan');
 
-                    $data_bencana = array(
-                        'nama_bencana' 		    => $this->input->post('nama_bencana'), 
-                        'id_kategori_bencana'   => $this->input->post('kategori_bencana'), 
-                        'kecamatan' 			=> $this->input->post('kecamatan'),
-                        'kabupaten'         	=> $this->input->post('kabupaten'),
-                        'provinsi'          	=> $this->input->post('provinsi'),
-                        'alamat_lengkap'	    => $this->input->post('alamat_lengkap'),
-                        'link_berita'	        => $this->input->post('link_berita'),
-                        'latitude'	            => $this->input->post('latitude'),
-                        'longitude'	            => $this->input->post('longitude'),
-                        'warna'	                => $this->input->post('warna'),
-                        'gambar'                => $gambar_name
-                    );
+            $tanggal_pelatihan_array = explode("-", $tanggal_pelatihan);
 
-                    //INSERT KE TABEL BENCANA
-				  $this->bencana->input_bencana($data_bencana);
-                echo $this->session->set_flashdata('msg','Ditambah');
-                redirect('forum/bencana');
+            $index_tanggal = $tanggal_pelatihan_array['0'];
 
-                } else {
-                    $this->session->set_flashdata('msg',  $this->upload->display_errors());
-                    $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
-                    $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
-                }
+            $pecah_tanggal = explode("/", $index_tanggal);
+
+            $convert_tanggal = str_replace(' ','', $pecah_tanggal['2']."-".$pecah_tanggal['0']."-".$pecah_tanggal['1']);
+            
+            $data_pelatihan = array(
+                'nama_pelatihan' 		    => $this->input->post('nama_pelatihan'), 
+                'id_kategori_pelatihan'     => $this->input->post('kategori_pelatihan'), 
+                'id_jenis_pelatihan' 			=> $this->input->post('id_jenis_pelatihan'),
+                'tanggal_pelatihan'         => $convert_tanggal,
+                'deskripsi_pelatihan'       => $this->input->post('deskripsi_pelatihan'),
+                'waktu'          	        => $this->input->post('waktu_pelatihan'),
+                'kuota'	                    => $this->input->post('kuota_pelatihan')
+            );
+
+            //INSERT KE TABEL PELATIHAN
+            $this->pelatihan->inputPelatihan($data_pelatihan);
+            echo $this->session->set_flashdata('msg','Ditambah');
+            redirect('forum/pelatihan');
+
             }else { 
-                $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
-                $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
+                $data['kategori_pelatihan'] = $this->pelatihan->getAllKategoriPelatihan();
+                $data['jenis_pelatihan'] = $this->pelatihan->getAllJenisPelatihan();
+                $this->load->view('back/forum_relawan/pelatihan/tambah_pelatihan', $data);
             }
         }else { 
-            $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
-            $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
+            $data['kategori_pelatihan'] = $this->pelatihan->getAllKategoriPelatihan();
+            $data['jenis_pelatihan'] = $this->pelatihan->getAllJenisPelatihan();
+            $this->load->view('back/forum_relawan/pelatihan/tambah_pelatihan', $data);
         }
     }
 
-    public function file_selected(){
+    public function edit_pelatihan()
+    {
+        if (isset($_POST['kirim'])) {
+            $tanggal_pelatihan = $this->input->post('tanggal_pelatihan');
 
-        $this->form_validation->set_message('file_selected', 'Gambar Harus Diisi');
-        if (empty($_FILES['gambar']['name'])) {
-                return false;
-            }else{
-                return true;
-            }
-	}
+            $tanggal_pelatihan_array = explode("-", $tanggal_pelatihan);
+
+            $index_tanggal = $tanggal_pelatihan_array['0'];
+
+            $pecah_tanggal = explode("/", $index_tanggal);
+
+            $convert_tanggal = str_replace(' ','', $pecah_tanggal['2']."-".$pecah_tanggal['0']."-".$pecah_tanggal['1']);
+
+            $data_pelatihan = array(
+                'id_pelatihan' 		    => $this->input->post('id_pelatihan'), 
+                'nama_pelatihan' 		    => $this->input->post('nama_pelatihan'), 
+                'id_kategori_pelatihan'     => $this->input->post('kategori_pelatihan'), 
+                'id_jenis_pelatihan' 			=> $this->input->post('id_jenis_pelatihan'),
+                'tanggal_pelatihan'         => $convert_tanggal,
+                'deskripsi_pelatihan'       => $this->input->post('deskripsi_pelatihan'),
+                'waktu'          	        => $this->input->post('waktu_pelatihan'),
+                'kuota'	                    => $this->input->post('kuota_pelatihan')
+            );
+
+            print_r($data_pelatihan);
+            die();
+
+            $this->pelatihan->editPelatihan($data_pelatihan);
+            echo $this->session->set_flashdata('msg','Diubah');
+            redirect('forum/pelatihan');
+
+        }else {
+            $id_pelatihan = $_GET['id_pelatihan'];
+            $data['kategori_pelatihan'] = $this->pelatihan->getAllKategoriPelatihan();
+            $data['jenis_pelatihan'] = $this->pelatihan->getAllJenisPelatihan();
+            $data['data_pelatihan'] = $this->pelatihan->getPelatihanById($id_pelatihan);
+            $this->load->view('back/forum_relawan/pelatihan/edit_pelatihan', $data);
+        }
+        
+    }
+
+    public function hapus_pelatihan()
+    {
+       $id_pelatihan = $_GET['id_pelatihan'];
+       $this->pelatihan->hapusPelatihan($id_pelatihan);
+       echo $this->session->set_flashdata('msg','Dihapus');
+       redirect('forum/pelatihan');
+    }
+
+    public function list_kategori_pelatihan()
+    {
+        $data['data_kategori_pelatihan'] = $this->kategori_pelatihan->getAllKategoriPelatihan();
+        $this->load->view('back/forum_relawan/kategori_pelatihan/list_kategori_pelatihan', $data);
+    }
+
+    public function tambah_kategori_pelatihan()
+    {
+        $nama_kategori_pelatihan = $this->input->post('nama_kategori_pelatihan');
+        $data = array(
+            'nama_kategori_pelatihan' => $nama_kategori_pelatihan
+        );
+        $this->kategori_pelatihan->inputKategoriPelatihan($data);
+        echo $this->session->set_flashdata('msg','Ditambah');
+        redirect('forum/pelatihan/list_kategori_pelatihan');
+    }
+
+    public function hapus_kategori_pelatihan()
+    {
+        $id_kategori_pelatihan = $_GET['id_kategori_pelatihan'];
+        $this->kategori_pelatihan->hapusKategoriPelatihan($id_kategori_pelatihan);
+        echo $this->session->set_flashdata('msg','Dihapus');
+        redirect('forum/pelatihan/list_kategori_pelatihan');
+    }
 
 }

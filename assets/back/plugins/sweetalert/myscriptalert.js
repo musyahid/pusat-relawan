@@ -1,7 +1,6 @@
 const flashData = $('.flash-data').data('flashdata');
 const flashDataErrors = $('.flash-data-errors').data('flashdata');
 
-console.log(flashDataErrors);
 
 if( flashData ) {
   swal({

@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Pelatihan
+        Edit Pelatihan
       </h1>
     </section>
 
@@ -28,11 +28,12 @@
       <div class="flash-data-errors" data-flashdata="<?= $this->session->flashdata('msg') ?>"></div>
       <div class="box-body">
         <div class="row">
-            <form role="form" method="post" action="<?php echo base_url('forum/pelatihan/tambah_pelatihan') ?>" enctype="multipart/form-data">
+            <form role="form" method="post" action="<?php echo base_url('forum/pelatihan/edit_pelatihan') ?>" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <div class="form-group <?php if(form_error('nama_pelatihan')) echo 'has-error' ?>">
                         <label>Nama Pelatihan</label>
-                        <input type="text" name="nama_pelatihan" value="<?php echo set_value('nama_pelatihan'); ?>" class="form-control" placeholder="Nama Pelatihan">
+                        <input type="hidden" name="id_pelatihan" value="<?= $data_pelatihan[0]->id_pelatihan ?>" class="form-control" placeholder="Nama Pelatihan">
+                        <input type="text" name="nama_pelatihan" value="<?= $data_pelatihan[0]->nama_pelatihan ?>" class="form-control" placeholder="Nama Pelatihan">
                         <span class="help-block"><?php echo form_error('nama_pelatihan'); ?></span>
                     </div>
                     <div class="form-group <?php if(form_error('kategori_pelatihan')) echo 'has-error' ?>">
@@ -41,7 +42,10 @@
                       <option value="">Pilih Kategori Pelatihan</option>
                       <?php
                             foreach ($kategori_pelatihan as $data) {
-                              echo "<option value='". $data->id_kategori_pelatihan."'>".$data->nama_kategori_pelatihan."</option>";
+                                if ($data_pelatihan[0]->id_kategori_pelatihan == $data->id_kategori_pelatihan) 
+                                echo "<option value='". $data->id_kategori_pelatihan."' selected>".$data->nama_kategori_pelatihan."</option>";
+                                else
+                                echo "<option value='". $data->id_kategori_pelatihan."'>".$data->nama_kategori_pelatihan."</option>";
                             }
                         ?>
                       ?>
@@ -54,10 +58,12 @@
                         <option value="">Pilih Jenis Pelatihan</option>
                         <?php
                             foreach ($jenis_pelatihan as $data) {
-                              echo "<option value='". $data->id_jenis_pelatihan."'>".$data->nama_jenis_pelatihan."</option>";
+                                if ($data_pelatihan[0]->id_jenis_pelatihan == $data->id_jenis_pelatihan) 
+                                echo "<option value='". $data->id_jenis_pelatihan."' selected>".$data->nama_jenis_pelatihan."</option>";
+                                else
+                                echo "<option value='". $data->id_jenis_pelatihan."'>".$data->nama_jenis_pelatihan."</option>";
                             }
                         ?>
-                      ?>
                       </select>
                       <span class="help-block"><?php echo form_error('id_jenis_pelatihan'); ?></span>
                     </div>
@@ -71,7 +77,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" name="tanggal_pelatihan" class="form-control pull-right" id="datepicker">
+                        <input type="text" name="tanggal_pelatihan" value="<? $data_pelatihan[0]->tanggal_pelatihan ?>" class="form-control pull-right" id="datepicker">
                         
                       </div>
                       <span class="help-block"><?php echo form_error('tanggal_pelatihan'); ?></span>
@@ -84,7 +90,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-clock-o"></i>
                         </div>
-                        <input type="text" name="waktu_pelatihan" class="form-control timepicker">
+                        <input type="text" name="waktu_pelatihan" value="<?= $data_pelatihan[0]->waktu ?>" class="form-control timepicker">
                       </div>
                       <span class="help-block"><?php echo form_error('waktu_pelatihan'); ?></span>
                       <!-- /.input group -->
@@ -93,15 +99,15 @@
                   </div>
                     <div class="form-group <?php if(form_error('kuota_pelatihan')) echo 'has-error' ?>">
                         <label>Kuota Pelatihan</label>
-                        <input type="number" name="kuota_pelatihan" value="<?php echo set_value('kuota_pelatihan'); ?>" class="form-control" placeholder="Kuota Pelatihan">
+                        <input type="number" name="kuota_pelatihan" value="<?= $data_pelatihan[0]->kuota ?>" class="form-control" placeholder="Kuota Pelatihan">
                         <span class="help-block"><?php echo form_error('kuota_pelatihan'); ?></span>
                         
                     </div>
                     <div class="form-group <?php if(form_error('deskripsi_pelatihan')) echo 'has-error' ?>">
                         <label>Deskripsi Pelatihan</label>
-                        <textarea name="deskripsi_pelatihan" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="deskripsi_pelatihan" class="form-control" cols="30" rows="10"><?= $data_pelatihan[0]->deskripsi_pelatihan ?></textarea>
                         <span class="help-block"><?php echo form_error('deskripsi_pelatihan'); ?></span>
-                        <button type="submit" name="kirim" class="btn btn-primary">INPUT PELATIHAN</button>
+                        <button type="submit" name="kirim" class="btn btn-primary">UPDATE PELATIHAN</button>
                     </div>
                    
                     <!-- /.form group -->

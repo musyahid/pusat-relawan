@@ -16,7 +16,8 @@ class relawan extends CI_Controller {
 
 	public function index()
 	{
-		$data['data_relawan'] = $this->forum_relawan->getAllRelawan();
+		$id_forum = $this->session->userdata('id_forum');
+		$data['data_relawan'] = $this->relawan->getAllRelawanByForumId($id_forum);
 		$this->load->view('back/forum_relawan/relawan/list_relawan', $data);
 	}
 	
@@ -28,14 +29,15 @@ class relawan extends CI_Controller {
 	}
 	public function list_pengajuan_relawan()
 	{
-        $data['data_pengajuan'] = $this->relawan->getAllPengajuanRelawan();
+		$id_forum = $this->session->userdata('id_forum');
+        $data['data_pengajuan'] = $this->relawan->getAllPengajuanRelawanByForumId($id_forum);
 		$this->load->view('back/forum_relawan/relawan/list_pengajuan', $data);
 	}
 
 	public function detail_pengajuan_relawan()
 	{
 		$id_relawan = $_GET['id_relawan'];
-		$data['pengajuan_relawan'] = $this->relawan->getPengajuanRelawanById($id_relawan);
+		$data['pengajuan_relawan'] = $this->relawan->getDetailPengajuanRelawanById($id_relawan);
 		$this->load->view('back/forum_relawan/relawan/detail_pengajuan', $data);
 	}
 
@@ -45,6 +47,14 @@ class relawan extends CI_Controller {
 		$this->relawan->accPengajuanRelawan($id_relawan);
 		echo $this->session->set_flashdata('msg','Ditambah');
 		redirect('forum/relawan');
+	}
+
+	public function tolak_pengajuan_relawan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$this->relawan->tolakPengajuanRelawan($id_relawan);
+		echo $this->session->set_flashdata('msg','Ditolak');
+		redirect('forum/relawan/list_pengajuan_relawan');
 	}
 
 

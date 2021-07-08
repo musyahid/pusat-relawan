@@ -111,7 +111,7 @@
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Telephone</label>
-                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" value="<?php echo set_value('nomor_handphone'); ?>" placeholder="Nomor Handphone"  />
+                    <input type="number" name="nomor_handphone" class="form-control" id="nomor_handphone" value="<?php echo set_value('nomor_handphone'); ?>" placeholder="Nomor Handphone"  />
                   </div>
                   <div class="col-lg-12 form-group">
                   <label for="nama_depan">Deksripsi Keahlian</label>

@@ -233,6 +233,8 @@
 <script src="<?= base_url('assets/back/') ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?= base_url('assets/back/') ?>bower_components/fastclick/lib/fastclick.js"></script>
+<!-- bootstrap time picker -->
+<script src="<?= base_url('assets/back/') ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/back/') ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -261,8 +263,18 @@
 </script>
 <script>
   $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+
+    //Date picker
+    $('#datepicker').datepicker({
+      dateFormat: "yy-mm-dd",  
+      autoclose: true
+    })
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+
   })
 
   //leafletjs

@@ -66,8 +66,18 @@
           <li class="active treeview">
             <li><a href="<?= base_url('forum/bencana') ?>"><i class="fa fa-book"></i> <span>DATA BENCANA</span></a></li>
           </li>
-          <li class="active treeview">
-            <li><a href="<?= base_url('forum/pelatihan') ?>"><i class="fa fa-book"></i> <span>DATA PELATIHAN</span></a></li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-pie-chart"></i>
+              <span>PELATIHAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url('forum/pelatihan  ') ?>"><i class="fa fa-circle-o"></i> DATA PELATIHAN</a></li>
+              <li><a href="<?= base_url('forum/pelatihan/list_kategori_pelatihan') ?>"><i class="fa fa-circle-o"></i> DATA KATEGORI PELATIHAN</a></li>
+            </ul>
           </li>
           <li class="active treeview">
             <li><a href="<?= base_url('forum/relawan') ?>"><i class="fa fa-book"></i> <span>DATA RELAWAN</span></a></li>

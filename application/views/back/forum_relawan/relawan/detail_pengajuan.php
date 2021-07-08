@@ -155,6 +155,7 @@
             <tr>
               <td colspan="5"> 
                 <center>
+                    <a href="<?php echo base_url() ?>forum/relawan/tolak_pengajuan_relawan?id_relawan=<?php echo $pengajuan_relawan[0]->id_relawan; ?>" class="btn btn-sm btn-danger"> <span class="" aria-hidden="true"></span> TOLAK</a>
                     <a href="<?php echo base_url() ?>forum/relawan/acc_pengajuan_relawan?id_relawan=<?php echo $pengajuan_relawan[0]->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="" aria-hidden="true"></span> SETUJUI</a>
                 </center>
               </td>

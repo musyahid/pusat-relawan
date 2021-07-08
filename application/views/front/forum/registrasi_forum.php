@@ -149,7 +149,7 @@
                   </div>
                   <div class="col-6 form-group">
                   <label for="nama_depan">Telephone</label>
-                    <input type="text" name="nomor_handphone" class="form-control" id="nomor_handphone" placeholder="Nomor Handphone"value="<?php 
+                    <input type="number" name="nomor_handphone" class="form-control" id="nomor_handphone" placeholder="Nomor Handphone"value="<?php 
                     if(validation_errors() != false) { 
                       echo $data_validasi['nomor_handphone'];
                     } ;

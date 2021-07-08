@@ -60,7 +60,7 @@
                             <?php } ?>
                             
                            </center>
-                           </td>
+                      </td>
                       <td>
                       <center>
                         <a href="<?php echo base_url() ?>forum/relawan/detail_relawan?id_akun=<?php echo $data->id_bencana; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>

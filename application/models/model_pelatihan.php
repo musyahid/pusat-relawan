@@ -3,11 +3,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class model_pelatihan extends CI_Model {
 
-   function getAllPelatihan()
+   
+   function getAllPelatihanPublished()
    {
       $this->db->from('pelatihan a');
       $this->db->join('kategori_pelatihan b', 'a.id_kategori_pelatihan = b.id_kategori_pelatihan');
       $this->db->join('jenis_pelatihan c', 'a.id_jenis_pelatihan = c.id_jenis_pelatihan');
+      $this->db->where_in('a.status_pengajuan_pelatihan', 1);
+      $query = $this->db->get();
+      return $query->result();
+   }
+
+   function getAllPelatihan()
+   {
+      $status_array = array(1, 2);
+      $this->db->from('pelatihan a');
+      $this->db->join('kategori_pelatihan b', 'a.id_kategori_pelatihan = b.id_kategori_pelatihan');
+      $this->db->join('jenis_pelatihan c', 'a.id_jenis_pelatihan = c.id_jenis_pelatihan');
+      $this->db->where_in('a.status_pengajuan_pelatihan', $status_array);
       $query = $this->db->get();
       return $query->result();
    }
@@ -16,10 +29,20 @@ class model_pelatihan extends CI_Model {
    {
       $this->db->from('pelatihan a');
       $this->db->join('kategori_pelatihan b', 'a.id_kategori_pelatihan = b.id_kategori_pelatihan');
+      $this->db->join('jenis_pelatihan c', 'a.id_jenis_pelatihan = c.id_jenis_pelatihan');
       $this->db->where('id_pelatihan', $id_pelatihan);
       $query = $this->db->get();
       return $query->result();
    }
+
+   public function getAllPengajuan(){
+      $this->db->from('pelatihan a');
+      $this->db->join('kategori_pelatihan b', 'a.id_kategori_pelatihan = b.id_kategori_pelatihan');
+      $this->db->join('jenis_pelatihan c', 'a.id_jenis_pelatihan = c.id_jenis_pelatihan');
+      $this->db->where('status_pengajuan_pelatihan', 0);
+      $query = $this->db->get();
+      return $query->result();
+  }
 
    function inputPelatihan($data)
    {
@@ -58,4 +81,69 @@ class model_pelatihan extends CI_Model {
       $this->db->where('id_pelatihan', $id_pelatihan);
       $this->db->delete('pelatihan');
    }
+
+   public function accPengajuanPelatihan($id_pelatihan)
+   {
+       $this->db->set('status_pengajuan_pelatihan', 1);
+       $this->db->where('id_pelatihan', $id_pelatihan);
+       $this->db->update('pelatihan'); 
+   }
+
+   public function tolakPengajuanPelatihan($id_pelatihan)
+   {
+       $this->db->set('status_pengajuan_pelatihan', 2);
+       $this->db->where('id_pelatihan', $id_pelatihan);
+       $this->db->update('pelatihan'); 
+   }
+
+   public function getDetailPengajuanPelatihanById($id_relawan)
+   {
+       $this->db->from('pelatihan_relawan a');
+       $this->db->join('relawan b', 'a.id_relawan = b.id_relawan');
+       $this->db->join('pelatihan c', 'a.id_pelatihan = c.id_pelatihan');
+       $this->db->join('akun d', 'b.id_akun = d.id_akun');
+       $this->db->where('a.id_relawan', $id_relawan);
+       $query = $this->db->get();
+       return $query->result();
+   }
+
+   public function getAllPengajuanPelatihanByForumId($id_forum)
+   {
+       $this->db->from('pelatihan_relawan a');
+       $this->db->join('relawan b', 'a.id_relawan = b.id_relawan');
+       $this->db->join('pelatihan c', 'a.id_pelatihan = c.id_pelatihan');
+       $this->db->join('akun d', 'b.id_akun = d.id_akun');
+       $this->db->where('a.status_pengajuan_pelatihan', 0);
+       $this->db->where('c.id_forum', $id_forum);
+       $query = $this->db->get();
+       return $query->result();
+   }
+
+   public function accPengajuanPelatihanRelawan($id_relawan)
+   {
+       $this->db->set('status_pengajuan_pelatihan', 1);
+       $this->db->where('id_relawan', $id_relawan);
+       $this->db->update('pelatihan_relawan'); // gives UPDATE mytable SET field = field+1 WHERE id = 2
+   }
+
+   public function tolakPengajuanPelatihanRelawan($id_relawan)
+   {
+       $this->db->set('status_pengajuan_pelatihan', 2);
+       $this->db->where('id_relawan', $id_relawan);
+       $this->db->update('pelatihan_relawan'); // gives UPDATE mytable SET field = field+1 WHERE id = 2
+   }
+
+   public function hapusRelawan($id_relawan)
+   {
+       $this->db->where('id_relawan', $id_relawan);
+       $this->db->delete('forum_relawan');
+   }
+
+
+   //FOR RELAWAN
+   public function inputPengajuanPelatihan($data)
+   {
+      $this->db->insert('pelatihan_relawan', $data);
+   }
+   
 }

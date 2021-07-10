@@ -15,7 +15,8 @@ class bencana extends CI_Controller {
 	
 	public function index()
 	{
-        $data['data_bencana'] = $this->bencana->getAllBencana();
+        $id_forum = $this->session->userdata('id_forum');
+        $data['data_bencana'] = $this->bencana->getAllBencanaByForumId($id_forum);
 		$this->load->view('back/forum_relawan/bencana/list_bencana', $data);
 	}
 
@@ -93,6 +94,13 @@ class bencana extends CI_Controller {
                 return true;
             }
 	}
+
+    public function detail_bencana()
+    {
+        $id_bencana = $_GET['id_bencana'];
+		$data['data_bencana'] = $this->bencana->getBencanaById($id_bencana);
+		$this->load->view('back/forum_relawan/bencana/detail_bencana', $data);
+    }
 
     public function hapus_bencana()
 	{

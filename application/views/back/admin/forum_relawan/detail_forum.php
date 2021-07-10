@@ -20,7 +20,7 @@
         <table class="table table-striped">
             <tr>
               <th scope="row"></th>
-              <td><b>Logo Forum</b></td>
+              <td style="width: 14%"><b>Logo Forum</b></td>
               <td><img src="<?= base_url('assets/images/logo_forum/'.$pengajuan_forum[0]->logo); ?>" width="200" class="img-thumbnail"</td>
               <td></td>
               <td></td>

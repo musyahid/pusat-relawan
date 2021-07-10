@@ -52,7 +52,7 @@ class relawan extends CI_Controller {
 	{
 		$id_relawan = $_GET['id_relawan'];
 		$this->relawan->accPengajuanRelawan($id_relawan);
-		echo $this->session->set_flashdata('msg','Ditambah');
+		echo $this->session->set_flashdata('msg','Disetujui');
 		redirect('admin/relawan/list_relawan');
 	}
 }

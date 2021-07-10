@@ -4,8 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class model_bencana extends CI_Model {
 
     public function getAllBencana(){
+
         $this->db->from('bencana a');
         $this->db->join('kategori_bencana b', 'a.id_kategori_bencana = b.id_kategori_bencana');
+        
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getAllPengajuan(){
+        $this->db->from('bencana a');
+        $this->db->join('kategori_bencana b', 'a.id_kategori_bencana = b.id_kategori_bencana');
+        $this->db->where('a.status_pengajuan', 0);
         
         $query = $this->db->get();
         return $query->result();
@@ -15,6 +25,15 @@ class model_bencana extends CI_Model {
         $this->db->from('bencana a');
         $this->db->join('kategori_bencana b', 'a.id_kategori_bencana = b.id_kategori_bencana');
         $this->db->where('a.status_pengajuan', 1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getAllBencanaByForumId($id_forum)
+    {
+        $this->db->from('bencana a');
+        $this->db->join('kategori_bencana b', 'a.id_kategori_bencana = b.id_kategori_bencana');
+        $this->db->where('a.id_forum', $id_forum);
         $query = $this->db->get();
         return $query->result();
     }

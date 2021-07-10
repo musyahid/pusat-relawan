@@ -47,9 +47,10 @@ class pelatihan extends CI_Controller {
             $convert_tanggal = str_replace(' ','', $pecah_tanggal['2']."-".$pecah_tanggal['0']."-".$pecah_tanggal['1']);
             
             $data_pelatihan = array(
+                'id_forum'                  => $this->session->userdata('id_forum'),
                 'nama_pelatihan' 		    => $this->input->post('nama_pelatihan'), 
                 'id_kategori_pelatihan'     => $this->input->post('kategori_pelatihan'), 
-                'id_jenis_pelatihan' 			=> $this->input->post('id_jenis_pelatihan'),
+                'id_jenis_pelatihan' 		=> $this->input->post('id_jenis_pelatihan'),
                 'tanggal_pelatihan'         => $convert_tanggal,
                 'deskripsi_pelatihan'       => $this->input->post('deskripsi_pelatihan'),
                 'waktu'          	        => $this->input->post('waktu_pelatihan'),
@@ -146,5 +147,37 @@ class pelatihan extends CI_Controller {
         echo $this->session->set_flashdata('msg','Dihapus');
         redirect('forum/pelatihan/list_kategori_pelatihan');
     }
+
+    public function list_pengajuan_pelatihan()
+	{
+		$id_forum = $this->session->userdata('id_forum');
+        $data['data_pengajuan'] = $this->pelatihan->getAllPengajuanPelatihanByForumId($id_forum);
+		$this->load->view('back/forum_relawan/pelatihan/list_pengajuan', $data);
+	}
+
+	public function detail_pengajuan_pelatihan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$data['data_pengajuan_pelatihan'] = $this->pelatihan->getDetailPengajuanPelatihanById($id_relawan);
+		$this->load->view('back/forum_relawan/pelatihan/detail_pengajuan', $data);
+	}
+
+	public function acc_pengajuan_pelatihan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$this->pelatihan->accPengajuanPelatihanRelawan($id_relawan);
+		echo $this->session->set_flashdata('msg','Disetujui');
+		redirect('forum/pelatihan');
+	}
+
+	public function tolak_pengajuan_pelatihan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$this->pelatihan->tolakPengajuanPelatihanRelawan($id_relawan);
+		echo $this->session->set_flashdata('msg','Ditolak');
+		redirect('forum/relawan/list_pengajuan_relawan');
+	}
+
+    
 
 }

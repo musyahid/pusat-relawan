@@ -27,6 +27,7 @@ class relawan extends CI_Controller {
 		$data['data_relawan'] = $this->forum_relawan->getRelawanById($id_relawan);
 		$this->load->view('back/forum_relawan/relawan/detail_relawan', $data);
 	}
+	
 	public function list_pengajuan_relawan()
 	{
 		$id_forum = $this->session->userdata('id_forum');
@@ -45,7 +46,7 @@ class relawan extends CI_Controller {
 	{
 		$id_relawan = $_GET['id_relawan'];
 		$this->relawan->accPengajuanRelawan($id_relawan);
-		echo $this->session->set_flashdata('msg','Ditambah');
+		echo $this->session->set_flashdata('msg','Disetujui');
 		redirect('forum/relawan');
 	}
 
@@ -54,8 +55,22 @@ class relawan extends CI_Controller {
 		$id_relawan = $_GET['id_relawan'];
 		$this->relawan->tolakPengajuanRelawan($id_relawan);
 		echo $this->session->set_flashdata('msg','Ditolak');
+		redirect('forum/relawan');
+	}
+
+    public function hapus_pengajuan_relawan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$this->relawan->hapusRelawan($id_relawan);
+		echo $this->session->set_flashdata('msg','Dihapus');
 		redirect('forum/relawan/list_pengajuan_relawan');
 	}
 
-
+    public function hapus_relawan()
+	{
+		$id_relawan = $_GET['id_relawan'];
+		$this->relawan->hapusRelawan($id_relawan);
+		echo $this->session->set_flashdata('msg','Dihapus');
+		redirect('forum/relawan');
+	}
 }

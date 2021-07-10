@@ -11,10 +11,10 @@ class model_forum_relawan extends CI_Model {
         $this->db->insert('forum', $data);
     }
 
-    public function getAllForum(){
+    public function getForumAktif(){
         $this->db->from('akun a');
         $this->db->join('forum f', 'a.id_akun = f.id_akun');
-
+        $this->db->where('f.status_pengajuan', 1);
         $query = $this->db->get();
         return $query->result();
     }
@@ -110,6 +110,12 @@ class model_forum_relawan extends CI_Model {
         $this->db->set('status_pengajuan_relawan', 2);
         $this->db->where('id_relawan', $id_relawan);
         $this->db->update('forum_relawan'); // gives UPDATE mytable SET field = field+1 WHERE id = 2
+    }
+
+    public function hapusRelawan($id_relawan)
+    {
+        $this->db->where('id_relawan', $id_relawan);
+        $this->db->delete('forum_relawan');
     }
 
 }

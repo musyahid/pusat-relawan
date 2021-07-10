@@ -8,12 +8,14 @@ class beranda extends CI_Controller {
 		parent::__construct();
 		$this->load->model('model_bencana', 'bencana');
 		$this->load->model('model_forum_relawan', 'forum');
+		$this->load->model('model_pelatihan', 'pelatihan');
     }
 	
 	public function index()
 	{
-		$data['data_bencana'] = $this->bencana->getAllBencanaPublish();
-		$data['data_forum'] = $this->forum->getAllForum();
+		$data['data_bencana'] 	= $this->bencana->getAllBencanaPublish();
+		$data['data_forum'] 	= $this->forum->getForumAktif();
+		$data['data_pelatihan'] = $this->pelatihan->getAllPelatihanPublished();
 		$this->load->view('beranda', $data);
 	}
 }

@@ -100,19 +100,18 @@
         </div>
 
         <div class="row align-items-center">
-
+        <?php foreach ($data_pelatihan as $data) { ?>
           <div class="col-lg-4">
             <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Business</h3>
-              <h4>$29<span>per month</span></h4>
+              <h3><?= $data->nama_pelatihan ?></h3>
               <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bx bx-check"></i> Kuota <?= $data->kuota ?> Relawan</li>
 
               </ul>
-              <a href="#" class="get-started-btn">Get Started</a>
+              <a href="<?= site_url() ?>pelatihan/detail_pelatihan?id_pelatihan=<?php echo $data->id_pelatihan; ?>" class="get-started-btn">Bergabung</a>
             </div>
           </div>
-
+          <?php } ?>
         </div>
 
       </div>

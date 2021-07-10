@@ -43,12 +43,12 @@
                   foreach ($data_pengajuan as $data) { ?>
                   <tr>
                       <td><?= $no++ ?></td>
-                      <td><?= $data->nama_forum?></td>
+                      <td><?= $data->nama_forum ?></td>
                       <td><?= $data->nama_lengkap ?></td>
                       <td><?= $data->alasan_bergabung ?><td>
                       <center>
                         <a href="<?php echo base_url() ?>forum/relawan/detail_pengajuan_relawan?id_relawan=<?php echo $data->id_relawan; ?>" class="btn btn-sm btn-success"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-                        <a href="<?php echo site_url() ?>forum/bencana/hapus_bencana?id_relawan=<?php echo $data->id_relawan; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        <a href="<?php echo site_url() ?>forum/relawan/hapus_pengajuan_relawan?id_relawan=<?php echo $data->id_relawan; ?>" class="btn btn-sm btn-danger tombol-hapus"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                       </center>
                       </td>
                   </tr>

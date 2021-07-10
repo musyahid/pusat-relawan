@@ -35,7 +35,7 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>DATA AKUN</span>
+            <span>KELOLA DATA</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -44,12 +44,14 @@
             <li><a href="<?= base_url('admin/relawan/list_relawan') ?>"><i class="fa fa-circle-o"></i> Relawan</a></li>
             <li><a href="<?= base_url('admin/forum_relawan/list_forum') ?>"><i class="fa fa-circle-o"></i> Forum Relawan</a></li>
             <li><a href="<?= base_url('admin/admin/list_admin') ?>"><i class="fa fa-circle-o"></i> Admin</a></li>
+            <li><a href="<?= base_url('admin/pelatihan/list_pelatihan') ?>"><i class="fa fa-circle-o"></i> Pelatihan</a></li>
+            <li><a href="<?= base_url('admin/bencana/list_bencana') ?>"><i class="fa fa-circle-o"></i> Benacana</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>DATA PENGAJUAN AKUN</span>
+            <span>DATA PENGAJUAN</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -57,6 +59,8 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/forum_relawan/list_pengajuan_forum') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN FORUM</a></li>
             <li><a href="<?= base_url('admin/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
+            <li><a href="<?= base_url('admin/pelatihan/list_pengajuan_pelatihan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN PELATIHAN</a></li>
+            <li><a href="<?= base_url('admin/bencana/list_pengajuan_bencana') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN BENCANA</a></li>
           </ul>
         </li>
         <?php } elseif (isset($_SESSION['login_forum']) == true) { ?>
@@ -80,7 +84,10 @@
             </ul>
           </li>
           <li class="active treeview">
-            <li><a href="<?= base_url('forum/relawan') ?>"><i class="fa fa-book"></i> <span>DATA RELAWAN</span></a></li>
+            <li><a href="<?= base_url('forum/relawan') ?>"><i class="fa fa-book"></i> <span>DATA FORUM RELAWAN</span></a></li>
+          </li>
+          <li class="active treeview">
+            <li><a href="<?= base_url('forum/pelatihan') ?>"><i class="fa fa-book"></i> <span>DATA PELATIHAN RELAWAN</span></a></li>
           </li>
 
           <li class="treeview">
@@ -93,6 +100,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url('forum/relawan/list_pengajuan_relawan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN RELAWAN</a></li>
+              <li><a href="<?= base_url('forum/pelatihan/list_pengajuan_pelatihan') ?>"><i class="fa fa-circle-o"></i> PENGAJUAN PELATIHAN</a></li>
             </ul>
           </li>
         <?php } ?>

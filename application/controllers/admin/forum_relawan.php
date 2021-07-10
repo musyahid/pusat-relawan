@@ -16,7 +16,7 @@ class forum_relawan extends CI_Controller {
 
 	public function list_forum()
 	{
-        $data['data_pengajuan'] = $this->forum_relawan->getAllForum();
+        $data['data_pengajuan'] = $this->forum_relawan->getForumAktif();
 		$this->load->view('back/admin/forum_relawan/list_forum', $data);
 	}
 	
@@ -52,7 +52,7 @@ class forum_relawan extends CI_Controller {
 	{
 		$id_forum = $_GET['id_forum'];
 		$this->forum_relawan->accPengajuanForum($id_forum);
-		echo $this->session->set_flashdata('msg','Ditambah');
+		echo $this->session->set_flashdata('msg','Disetujui');
 		redirect('admin/forum_relawan/list_forum');
 	}
 }

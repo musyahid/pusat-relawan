@@ -15,7 +15,7 @@ class bencana extends CI_Controller {
 	public function list_bencana()
 	{
 		$data['data_bencana'] = $this->bencana->getAllBencana();
-		$this->load->view('back/admin/bencana/list_pengajuan', $data);
+		$this->load->view('back/admin/bencana/list_bencana', $data);
 	}
 	
 	public function list_pengajuan_bencana()

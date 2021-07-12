@@ -29,7 +29,7 @@ class bencana extends CI_Controller {
             $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required');
             $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
             $this->form_validation->set_rules('alamat_lengkap', 'Alamat Lengkap', 'required');
-            $this->form_validation->set_rules('link_berita_bencana', 'Link Berita', 'required');
+            $this->form_validation->set_rules('link_berita', 'Link Berita', 'required');
             $this->form_validation->set_rules('latitude', 'Latitude', 'required');
             $this->form_validation->set_rules('longitude', 'Longitude', 'required');
             $this->form_validation->set_rules('warna', 'Warna', 'required');
@@ -52,6 +52,7 @@ class bencana extends CI_Controller {
 				    $gambar_name = $gambar['file_name'];
 
                     $data_bencana = array(
+                        'id_forum'              => $this->session->userdata('id_forum'),
                         'nama_bencana' 		    => $this->input->post('nama_bencana'), 
                         'id_kategori_bencana'   => $this->input->post('kategori_bencana'), 
                         'kecamatan' 			=> $this->input->post('kecamatan'),
@@ -71,13 +72,17 @@ class bencana extends CI_Controller {
                 redirect('forum/bencana');
 
                 } else {
-                    $this->session->set_flashdata('msg',  $this->upload->display_errors());
-                    $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
-                    $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
+                    echo 'sdsd';
+                    // $this->session->set_flashdata('msg',  $this->upload->display_errors());
+                    // $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
+                    // $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
                 }
             }else { 
-                $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
-                $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
+                $err = $this->upload->display_errors();
+                print_r($err);
+                // $this->session->set_flashdata('msg',  $this->upload->display_errors());
+                // $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
+                // $this->load->view('back/forum_relawan/bencana/tambah_bencana', $data);
             }
         }else { 
             $data['kategori_bencana'] = $this->bencana->getAllKategoriBencana();
